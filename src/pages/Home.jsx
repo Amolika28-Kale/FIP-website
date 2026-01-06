@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const bgImages = [
-  "https://media.istockphoto.com/id/2208070069/photo/budget-and-financial-planning-concept-calculate-company-income-and-expenses-corporate-finance.webp",
-  "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+    "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+ "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
   "https://images.unsplash.com/photo-1601597111158-2fceff292cdc",
 ];
 
