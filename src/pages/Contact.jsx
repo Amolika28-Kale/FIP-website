@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, ShieldCheck, Zap, BarChart3, Users } from "lucide-react";
 
 // Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const staggerContainer = {
@@ -18,87 +19,89 @@ const staggerContainer = {
 
 export default function Contact() {
   return (
-    <div className="w-full bg-white overflow-hidden">
+    <div className="w-full bg-[#0a0c10] text-slate-200 overflow-x-hidden pt-20">
       
       {/* ================= HERO HEADER ================= */}
-      <section className="relative py-16 md:py-24 bg-indigo-950 text-white overflow-hidden">
-        {/* Animated Background Mesh */}
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,#4f46e5_0%,transparent_50%)]" />
+      <section className="relative py-20 md:py-32 bg-slate-950 overflow-hidden border-b border-white/5 px-6">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+        <motion.div 
+          animate={{ opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#f59e0b10_0%,transparent_50%)]" 
+        />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-7xl font-black mb-4 md:mb-6 tracking-tight leading-tight">
-              Connect with <span className="text-indigo-400">Experts.</span>
+            <span className="text-amber-500 font-mono text-[10px] uppercase tracking-[0.4em] mb-6 block">Communication Protocol</span>
+            <h1 className="text-5xl md:text-8xl font-light mb-6 tracking-tighter text-white leading-none">
+              Consult a <span className="text-amber-500 font-bold">Principal.</span>
             </h1>
-            <p className="text-indigo-200 text-base md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-              Have a question about a loan, an investment, or a property? 
-              Our senior consultants are standing by to guide you.
+            <p className="text-slate-400 text-sm md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              Initiate a confidential discussion regarding your capital requirements, 
+              investment portfolio, or property acquisition strategy.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* ================= MAIN CONTENT ================= */}
-      <section className="py-12 md:py-24 relative bg-slate-50 px-4 md:px-6">
+      <section className="py-24 bg-[#0f1218] px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
 
-            {/* CONTACT FORM CARD */}
+            {/* LUXURY CONTACT FORM */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl shadow-indigo-100 p-6 md:p-12 border border-slate-100 order-2 lg:order-1"
+              className="bg-slate-900/50 p-8 md:p-16 border border-white/5 rounded-sm shadow-2xl order-2 lg:order-1"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Send a Message</h2>
-              <p className="text-sm md:text-base text-slate-500 mb-8 font-light">
-                Average response time: <span className="text-indigo-600 font-bold">under 2 hours</span>.
-              </p>
+              <h2 className="text-xs font-black text-amber-500 uppercase tracking-[0.3em] mb-10">Private Inquiry</h2>
 
-              <form className="space-y-4 md:space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <FormInput label="Full Name" type="text" placeholder="John Doe" />
-                  <FormInput label="Email Address" type="email" placeholder="john@example.com" />
+              <form className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <FormInput label="Full Name" type="text" placeholder="Individual / Entity Name" />
+                  <FormInput label="Corporate Email" type="email" placeholder="name@entity.com" />
                 </div>
-                <FormInput label="Phone Number" type="tel" placeholder="+91 00000 00000" />
+                <FormInput label="Direct Line" type="tel" placeholder="+91 XXX XXX XXXX" />
                 
-                <div className="space-y-2">
-                  <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Your Inquiry</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Nature of Inquiry</label>
                   <textarea
-                    rows="4"
-                    placeholder="Tell us about your financial goals..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl px-4 py-3 md:px-5 md:py-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all text-slate-700 text-sm md:text-base"
+                    rows="5"
+                    placeholder="Brief summary of capital objectives..."
+                    className="w-full bg-white/5 border border-white/10 rounded-sm px-5 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-white text-sm font-light resize-none"
                   ></textarea>
                 </div>
 
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-lg shadow-xl shadow-indigo-200 transition-all uppercase tracking-widest"
+                  className="w-full bg-amber-500 text-slate-950 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] transition-all"
                 >
-                  Send Inquiry
+                  Initiate Consultation
                 </motion.button>
               </form>
             </motion.div>
 
-            {/* INFO & WHY US */}
-            <div className="space-y-8 md:space-y-12 order-1 lg:order-2">
+            {/* INSTITUTIONAL INFO */}
+            <div className="space-y-16 order-1 lg:order-2">
               <motion.div 
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={staggerContainer}
-                className="space-y-6 md:space-y-8"
+                className="space-y-10"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900">Direct Contact</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                  <ContactIconCard icon="📞" title="Phone" info="+91 XXX XXX XXXX" sub="Mon-Sat, 9am-6pm" />
-                  <ContactIconCard icon="✉️" title="Email" info="info@fipmodel.com" sub="24/7 Support" />
+                <h3 className="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold">Direct Channels</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <ContactIconCard icon={<Phone size={20}/>} title="Voice Protocol" info="+91 XXX XXX XXXX" sub="9 AM - 6 PM IST" />
+                  <ContactIconCard icon={<Mail size={20}/>} title="Secure Mail" info="advisory@fipwealth.com" sub="24/7 Monitoring" />
                 </div>
               </motion.div>
 
@@ -107,15 +110,15 @@ export default function Contact() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={staggerContainer}
-                className="bg-indigo-900 rounded-3xl md:rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl"
+                className="bg-slate-950 p-10 md:p-14 border border-white/5 relative overflow-hidden"
               >
-                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Why Choose FIP?</h3>
-                <ul className="space-y-3 md:space-y-4">
-                  <WhyItem text="Transparent and registered documentation" />
-                  <WhyItem text="Competitive interest rates and High ROI" />
-                  <WhyItem text="Quick 24-48 hour approval process" />
-                  <WhyItem text="Expert personalized financial consultation" />
-                  <WhyItem text="Years of proven market leadership" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 blur-3xl" />
+                <h3 className="text-xl font-bold mb-10 text-white tracking-tight">The FIP Advantage</h3>
+                <ul className="space-y-6">
+                  <WhyItem icon={<ShieldCheck size={16}/>} text="Sovereign asset registration in client name." />
+                  <WhyItem icon={<BarChart3 size={16}/>} text="Institutional grade ROI benchmarks." />
+                  <WhyItem icon={<Zap size={16}/>} text="Accelerated 48-hour capital disbursement." />
+                  <WhyItem icon={<Users size={16}/>} text="Dedicated multi-disciplinary advisory team." />
                 </ul>
               </motion.div>
             </div>
@@ -123,62 +126,37 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ================= LOCATIONS SECTION ================= */}
-      {/* <section className="py-16 md:py-24 bg-white px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Regional Presence</h2>
-            <div className="h-1.5 w-16 md:w-24 bg-indigo-600 mx-auto rounded-full" />
-          </div>
-
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          >
-            <LocationCard 
-              name="Head Office" 
-              addr="123 Finance Street, Business District" 
-              email="headoffice@fipmodel.com"
-            />
-            <LocationCard 
-              name="Branch - North" 
-              addr="456 Investment Ave, Commercial Zone" 
-              email="north@fipmodel.com"
-            />
-            <LocationCard 
-              name="Branch - South" 
-              addr="789 Property Lane, Financial Hub" 
-              email="south@fipmodel.com"
-            />
-          </motion.div>
-        </div>
-      </section> */}
-
-      {/* ================= INTERACTION DIAGRAM ================= */}
-      <section className="py-12 bg-slate-100">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-            <h4 className="text-lg font-bold text-indigo-900 mb-8 uppercase tracking-widest">Our Communication Workflow</h4>
+      {/* ================= WORKFLOW DIAGRAM ================= */}
+      <section className="py-24 bg-white text-slate-950 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+            <h4 className="text-[10px] font-black text-amber-600 mb-6 uppercase tracking-[0.4em]">Operational Pipeline</h4>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tighter mb-16">Data-Driven Communication</h3>
             
-            <p className="mt-6 text-sm text-slate-500 font-light italic">From inquiry to solution—we ensure a seamless data-driven experience.</p>
+            [Image of professional financial communication workflow diagram showing steps: Inquiry, Principal Assignment, Compliance Audit, Structured Proposal]
+
+            <p className="mt-16 text-xs text-slate-400 font-mono tracking-widest uppercase italic">Optimized for privacy and execution velocity.</p>
         </div>
       </section>
+
+      <footer className="py-12 bg-[#0a0c10] text-center border-t border-white/5 px-6">
+          <p className="text-slate-600 text-[10px] uppercase tracking-[0.3em]">
+            Authorized Personnel Only — Confidential Channel
+          </p>
+      </footer>
     </div>
   );
 }
 
-/* ================= MINI COMPONENTS ================= */
+/* ================= HELPER COMPONENTS ================= */
 
 function FormInput({ label, type, placeholder }) {
   return (
-    <div className="space-y-1.5 md:space-y-2">
-      <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">{label}</label>
+    <div className="space-y-3">
+      <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 ml-1">{label}</label>
       <input
         type={type}
         placeholder={placeholder}
-        className="w-full bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl px-4 py-3 md:px-5 md:py-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all text-slate-700 text-sm md:text-base"
+        className="w-full bg-white/5 border border-white/10 rounded-sm px-5 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-white text-sm font-light"
       />
     </div>
   );
@@ -188,38 +166,21 @@ function ContactIconCard({ icon, title, info, sub }) {
   return (
     <motion.div 
       variants={fadeInUp}
-      className="bg-white p-5 md:p-6 rounded-2xl md:rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all"
+      className="group p-6 border-l border-white/5 hover:border-amber-500 transition-all duration-500"
     >
-      <div className="text-2xl md:text-3xl mb-3 md:mb-4">{icon}</div>
-      <p className="text-[10px] md:text-xs font-bold text-indigo-600 uppercase mb-1">{title}</p>
-      <p className="text-base md:text-lg font-bold text-slate-900 mb-0.5 break-words">{info}</p>
-      <p className="text-[10px] md:text-xs text-slate-400">{sub}</p>
+      <div className="text-amber-500 mb-6 group-hover:scale-110 transition-transform">{icon}</div>
+      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">{title}</p>
+      <p className="text-lg font-bold text-white mb-1 break-words tracking-tight">{info}</p>
+      <p className="text-[10px] text-slate-600 font-mono">{sub}</p>
     </motion.div>
   );
 }
 
-function WhyItem({ text }) {
+function WhyItem({ icon, text }) {
   return (
-    <motion.li variants={fadeInUp} className="flex items-center gap-3 text-xs md:text-sm opacity-90 group">
-      <div className="h-4 w-4 md:h-5 md:w-5 rounded-full bg-indigo-500 flex items-center justify-center text-[8px] md:text-[10px] shrink-0">✓</div>
-      <span className="leading-tight">{text}</span>
+    <motion.li variants={fadeInUp} className="flex items-center gap-4 text-xs font-light text-slate-400 group">
+      <div className="text-amber-500 group-hover:scale-125 transition-transform duration-300 shrink-0">{icon}</div>
+      <span className="group-hover:text-white transition-colors">{text}</span>
     </motion.li>
-  );
-}
-
-function LocationCard({ name, addr, email }) {
-  return (
-    <motion.div 
-      variants={fadeInUp}
-      whileHover={{ y: -5 }}
-      className="bg-slate-50 p-6 md:p-8 rounded-2xl md:rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-lg transition-all duration-300"
-    >
-      <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-slate-900">{name}</h3>
-      <div className="space-y-3 md:space-y-4 text-xs md:text-sm text-slate-500">
-        <p className="flex gap-2">📍 <span className="leading-snug">{addr}</span></p>
-        <p className="flex gap-2">✉️ <span className="text-indigo-600 font-medium truncate">{email}</span></p>
-        <p className="flex gap-2">⏰ <span>09:00 AM - 06:00 PM</span></p>
-      </div>
-    </motion.div>
   );
 }
