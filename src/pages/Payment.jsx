@@ -10,19 +10,20 @@ export default function Payment() {
         {/* LEFT — SUMMARY */}
         <div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-            Secure <span className="text-amber-500">Payment</span>
+            FIP <span className="text-amber-500">Consultancy</span>
           </h1>
 
           <p className="text-slate-400 text-lg font-light mb-10">
-            Complete your consultation onboarding using our secure payment
-            gateway powered by Stripe.
+            Access professional financial consultancy, investment guidance,
+            and property services through our secure payment process.
           </p>
 
           <div className="space-y-6 border-l border-white/10 pl-6">
             {[
-              "Private Wealth Consultation",
-              "Portfolio Risk Assessment",
-              "Investment Strategy Blueprint",
+              "Instant Loan Without Collateral",
+              "Investment Opportunities",
+              "Property Buy and Sell",
+              "Professional Services & Facilities Management",
             ].map((item, i) => (
               <div key={i} className="text-slate-300 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
@@ -33,7 +34,7 @@ export default function Payment() {
 
           <div className="mt-12 flex items-center gap-4 text-slate-500 text-sm">
             <ShieldCheck className="text-amber-500" size={18} />
-            Payments are encrypted and secured
+            Secure payments with industry-standard encryption
           </div>
         </div>
 
@@ -44,7 +45,7 @@ export default function Payment() {
             <Lock size={18} className="text-slate-500" />
           </div>
 
-          {/* Fake Stripe Fields */}
+          {/* Payment Fields */}
           <div className="space-y-6">
             <div>
               <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
@@ -97,9 +98,9 @@ export default function Payment() {
             </button>
           </div>
 
-          {/* Stripe Trust Footer */}
+          {/* Trust Footer */}
           <div className="mt-8 text-center text-xs text-slate-400">
-            Powered by <span className="font-bold">Stripe</span> • PCI DSS Compliant
+            Secure Checkout • Encrypted Transactions
           </div>
         </div>
       </div>
