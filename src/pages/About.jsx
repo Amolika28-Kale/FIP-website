@@ -12,98 +12,102 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
 export default function About() {
   return (
-    <div className="w-full bg-white overflow-hidden">
+    <div className="w-full bg-[#0a0c10] text-slate-200 overflow-x-hidden pt-20">
       
       {/* ================= HERO SECTION ================= */}
-      {/* Mobile: 50vh, Desktop: 60vh */}
-      <section className="relative min-h-[50vh] md:h-[60vh] flex items-center justify-center bg-indigo-950 overflow-hidden px-4">
-        {/* Background Overlay Pattern */}
-        <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+      <section className="relative min-h-[50vh] md:h-[65vh] flex items-center justify-center bg-slate-950 overflow-hidden px-6 border-b border-white/5">
+        {/* Prestige Texture Overlay */}
+        <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         
-        <div className="relative z-10 max-w-7xl mx-auto text-center text-white py-12">
+        <div className="relative z-10 max-w-7xl mx-auto text-center py-12">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
           >
+            <motion.div variants={fadeInUp} className="mb-6 flex justify-center">
+               <span className="px-4 py-1 border border-amber-500/30 text-amber-500 text-[10px] uppercase tracking-[0.4em] font-bold bg-amber-500/5">
+                 Established Excellence
+               </span>
+            </motion.div>
             <motion.h1 
               variants={fadeInUp}
-              className="text-5xl md:text-8xl font-black mb-4 md:mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-indigo-300 leading-tight"
+              className="text-5xl md:text-[10rem] font-light mb-6 tracking-tighter text-white leading-none"
             >
-              Our Legacy.
+              Our <span className="text-amber-500 font-bold">Legacy.</span>
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="max-w-3xl mx-auto text-lg md:text-2xl font-light opacity-80 leading-relaxed px-2"
+              className="max-w-3xl mx-auto text-sm md:text-xl font-light text-slate-400 leading-relaxed uppercase tracking-[0.1em]"
             >
-              Model <span className="text-indigo-400 font-medium">Finance</span> | 
-              Investment | <span className="text-indigo-400 font-medium">Property</span>
+              Model Finance <span className="text-amber-500 mx-2">/</span> 
+              Investment <span className="text-amber-500 mx-2">/</span> Property
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* ================= WHO WE ARE ================= */}
-      <section className="py-16 md:py-24 bg-white px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <section className="py-24 bg-[#0f1218] px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative order-2 md:order-1"
+            className="order-2 md:order-1"
           >
-            <div className="absolute -top-4 -left-4 w-16 h-16 md:w-24 md:h-24 bg-indigo-600/10 rounded-full blur-2xl" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-slate-900 italic underline decoration-indigo-500 underline-offset-8">Who We Are</h2>
-            <div className="space-y-4 md:space-y-6 text-slate-600 text-base md:text-lg leading-relaxed font-light">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-amber-500 font-black mb-6">The Institution</h2>
+            <h3 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tighter">Architects of Wealth</h3>
+            <div className="space-y-6 text-slate-400 text-base md:text-lg leading-relaxed font-light">
               <p>
-                <strong className="text-indigo-600 font-bold">FIP</strong> is more than a financial services firm; we are architects of wealth. Based on years of market leadership, we bridge the gap between complex financial instruments and individual success.
+                <strong className="text-white font-bold">FIP</strong> is not merely a service provider; we are a strategic partner in capital preservation and growth. Leveraging decades of market intelligence, we specialize in bridging the gap between sophisticated financial instruments and tangible success.
               </p>
               <p>
-                Our mission is to empower the next generation of investors through <span className="text-slate-900 font-medium">Transparency</span>, <span className="text-slate-900 font-medium">Security</span>, and <span className="text-slate-900 font-medium">Profitability</span>.
+                Our operational framework is built upon three non-negotiable pillars: <span className="text-amber-500">Absolute Transparency</span>, <span className="text-amber-500">Structural Security</span>, and <span className="text-amber-500">Compounded Profitability</span>.
               </p>
             </div>
           </motion.div>
 
           <motion.div 
-             initial={{ opacity: 0, scale: 0.9 }}
+             initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
-             className="bg-slate-100 rounded-3xl md:rounded-[3rem] p-3 md:p-4 rotate-0 md:rotate-2 hover:rotate-0 transition-transform duration-500 order-1 md:order-2"
+             className="relative order-1 md:order-2"
           >
+            <div className="absolute inset-0 border border-amber-500/20 translate-x-4 translate-y-4 -z-10" />
             <img 
               src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80" 
-              alt="Team Meeting" 
-              className="rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl w-full h-auto"
+              alt="Executive Management" 
+              className="grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl w-full h-auto border border-white/5"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* ================= ACHIEVEMENTS ================= */}
-      <section className="py-16 md:py-24 bg-indigo-600 text-white px-6">
+      {/* ================= STATS SECTION (Prestige Gold) ================= */}
+      <section className="py-24 bg-amber-500 text-slate-950 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Mobile: 2x2 grid, Desktop: 1x4 grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
-            <StatCard value="1000" suffix="+" label="Happy Clients" />
-            <StatCard value="500" suffix="Cr+" label="Funds Managed" />
-            <StatCard value="98" suffix="%" label="Client Satisfaction" />
-            <StatCard value="15" suffix="+" label="Years Experience" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-4 text-center">
+            <StatCard value="1000" suffix="+" label="Elite Clients" />
+            <StatCard value="500" suffix="Cr+" label="AuM Portfolio" />
+            <StatCard value="98" suffix="%" label="Retention Rate" />
+            <StatCard value="15" suffix="+" label="Years of Alpha" />
           </div>
         </div>
       </section>
 
-      {/* ================= CORE VALUES ================= */}
-      <section className="py-16 md:py-24 bg-slate-50 px-6">
+      {/* ================= CORE VALUES (Grid Border) ================= */}
+      <section className="py-24 bg-[#0a0c10] px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-sm md:text-base text-slate-500">The pillars of our business philosophy.</p>
+          <div className="text-center mb-20">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-slate-500 font-black mb-4">Our DNA</h2>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">Guiding Principles</h3>
           </div>
 
           <motion.div 
@@ -111,54 +115,41 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10"
           >
-            <ValueCard icon="💎" title="Transparency" desc="Registration in client names for complete legal security." />
-            <ValueCard icon="🎯" title="Excellence" desc="Driven by high-performance results and elite standards." />
-            <ValueCard icon="🤝" title="Client First" desc="We measure our success solely by your financial growth." />
-            <ValueCard icon="⚡" title="Results Driven" desc="Consistently beating market offers with our ROI strategies." />
+            <ValueCard index="01" title="Transparency" desc="Assets are registered directly in client names for absolute legal sovereignty." />
+            <ValueCard index="02" title="Excellence" desc="Measured by high-performance data points and institutional-grade standards." />
+            <ValueCard index="03" title="Fiduciary Duty" desc="We operate with a client-first mandate, aligning our success with your growth." />
+            <ValueCard index="04" title="Performance" desc="Targeting market-beating ROI through proprietary strategic allocation." />
           </motion.div>
-        </div>
-      </section>
-
-      {/* ================= WHY CHOOSE FIP ================= */}
-      <section className="py-16 md:py-24 bg-white px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-20">The FIP Advantage</h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <WhyCard title="Legal Integrity" desc="Duly registered documentation ensuring you own your assets completely." />
-            <WhyCard title="Market Beating ROI" desc="Returns that outperform traditional banks and standard market offers." />
-            <WhyCard title="24-Hour Velocity" desc="Streamlined approval processes for personal and business liquidity." />
-            <WhyCard title="Bespoke Advice" desc="Tailored guidance from consultants with decades of combined experience." />
-            <WhyCard title="Unified Ecosystem" desc="Finance, Property, and Investment—all perfectly integrated." />
-            <WhyCard title="Custom Risk Profiles" desc="Strategies matched exactly to your personal risk appetite." />
-          </div>
         </div>
       </section>
 
       {/* ================= COMMITMENT ================= */}
-      <section className="py-16 md:py-24 bg-indigo-950 text-white relative overflow-hidden px-6">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')]" />
+      <section className="py-32 bg-slate-950 text-white relative overflow-hidden px-6 border-t border-white/5">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 italic">Our Promise</h2>
-            <p className="text-base md:text-lg opacity-80 leading-relaxed md:leading-loose font-light mb-8 px-2 md:px-0">
-              "We take the responsibility of your financial decisions personally. Our team works tirelessly to ensure that every transaction is not just a deal, but a step toward your legacy."
+            <span className="text-amber-500 font-mono text-xs uppercase tracking-widest mb-10 block">Executive Commitment</span>
+            <p className="text-xl md:text-4xl leading-snug font-light italic text-slate-300">
+              "We manage your wealth as if it were our own heritage. Every decision is a calculated step toward securing your financial sovereignty."
             </p>
-            <div className="w-16 md:w-20 h-1 bg-indigo-500 mx-auto rounded-full" />
+            <div className="mt-12 h-px w-24 bg-amber-500 mx-auto" />
           </motion.div>
         </div>
       </section>
 
-      <footer className="py-8 md:py-12 bg-white text-center text-slate-400 text-[10px] md:text-xs px-6">
-         Note: This platform is designed for professional financial representation. 
-         All transactions should be conducted via our verified secure channels.
+      <footer className="py-12 bg-[#0a0c10] text-center border-t border-white/5 px-6">
+          <p className="text-slate-600 text-[10px] uppercase tracking-[0.3em] leading-relaxed">
+            Strictly Confidential <span className="mx-2">|</span> 
+            Professional Representation Only <span className="mx-2">|</span> 
+            FIP Governance 2026
+          </p>
       </footer>
     </div>
   );
@@ -169,38 +160,24 @@ export default function About() {
 function StatCard({ value, suffix, label }) {
   return (
     <motion.div 
-      whileHover={{ y: -5 }}
-      className="p-2 md:p-6"
+      whileHover={{ scale: 1.05 }}
+      className="p-4"
     >
-      <p className="text-3xl md:text-5xl font-black mb-1 md:mb-2">{value}{suffix}</p>
-      <p className="text-indigo-200 uppercase tracking-widest text-[10px] md:text-xs font-bold">{label}</p>
+      <p className="text-4xl md:text-6xl font-black mb-2 tracking-tighter">{value}{suffix}</p>
+      <p className="text-slate-900 uppercase tracking-widest text-[10px] md:text-xs font-black opacity-60">{label}</p>
     </motion.div>
   );
 }
 
-function ValueCard({ icon, title, desc }) {
+function ValueCard({ index, title, desc }) {
   return (
     <motion.div 
       variants={fadeInUp}
-      whileHover={{ scale: 1.02 }}
-      className="bg-white p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 text-center transition-all hover:shadow-lg"
+      className="bg-[#0f1218] p-10 group hover:bg-slate-900 transition-all duration-500"
     >
-      <div className="text-3xl md:text-4xl mb-3 md:mb-4">{icon}</div>
-      <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-slate-900">{title}</h3>
-      <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{desc}</p>
-    </motion.div>
-  );
-}
-
-function WhyCard({ title, desc }) {
-  return (
-    <motion.div 
-      whileHover={{ y: -5 }}
-      className="group p-6 md:p-8 bg-slate-50 rounded-2xl md:rounded-[2rem] border border-transparent hover:border-indigo-100 hover:bg-white transition-all duration-300"
-    >
-      <div className="h-1.5 w-10 bg-indigo-500 rounded-full mb-4 md:mb-6 group-hover:w-16 transition-all" />
-      <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-slate-900">{title}</h3>
-      <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{desc}</p>
+      <div className="text-amber-500/20 font-mono text-4xl font-bold mb-6 group-hover:text-amber-500 transition-colors">{index}</div>
+      <h3 className="text-xl font-bold mb-4 text-white tracking-tight uppercase">{title}</h3>
+      <p className="text-sm text-slate-500 leading-relaxed font-light">{desc}</p>
     </motion.div>
   );
 }

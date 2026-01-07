@@ -18,49 +18,50 @@ const staggerContainer = {
 };
 
 export default function Property() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-white overflow-x-hidden">
+    <div className="w-full bg-[#0a0c10] text-slate-200 overflow-x-hidden pt-20">
       
       {/* ================= HERO SECTION ================= */}
-      {/* Reduced height on mobile for better focus */}
-      <section className="relative h-[50vh] md:h-[65vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden border-b border-white/5">
         <motion.div 
-          initial={{ scale: 1.1 }}
+          initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ duration: 20, ease: "linear" }}
           className="absolute inset-0 z-0"
         >
           <img 
             src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80" 
             alt="Luxury Property"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-slate-900/40 to-transparent" />
         </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-            <motion.span variants={fadeInUp} className="bg-indigo-500 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 inline-block">
-              Premium Real Estate
-            </motion.span>
-            <motion.h1 variants={fadeInUp} className="text-4xl md:text-7xl font-black mb-4 md:mb-6 tracking-tight leading-tight">
-              Property <span className="text-indigo-400">Excellence.</span>
+            <motion.div variants={fadeInUp} className="mb-6 flex justify-center">
+               <span className="px-4 py-1 border border-amber-500/30 text-amber-500 text-[10px] uppercase tracking-[0.4em] font-bold bg-amber-500/5">
+                 Prime Asset Acquisition
+               </span>
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-9xl font-light mb-6 tracking-tighter leading-tight text-white">
+              Property <span className="text-amber-500 font-bold">Architects.</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="max-w-2xl mx-auto text-sm md:text-xl opacity-90 font-light italic px-4">
-              "Building wealth through brick and mortar with guaranteed exit strategies."
+            <motion.p variants={fadeInUp} className="max-w-2xl mx-auto text-slate-300 text-sm md:text-xl font-light italic px-4">
+              "Building intergenerational wealth through strategic brick and mortar acquisition with guaranteed exit protocols."
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= SERVICES SECTION ================= */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* ================= SERVICES GRID (Institutional) ================= */}
+      <section className="py-24 bg-[#0f1218]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Masterclass Services</h2>
-            <div className="h-1 w-16 md:w-20 bg-indigo-600 mx-auto rounded-full" />
+          <div className="text-center mb-20">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-amber-500 font-black mb-4">The Methodology</h2>
+            <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">Masterclass Advisory</h3>
           </div>
 
           <motion.div 
@@ -68,107 +69,110 @@ export default function Property() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5"
           >
             <ServiceCard 
-              icon="🏠"
+              index="01"
               title="Consultation" 
-              desc="Expert guidance for high-stakes residential and commercial property transactions."
-              items={["Market Analysis", "Valuation", "Legal Docs"]}
+              desc="High-stakes guidance for residential and commercial acquisitions, backed by real-time market data."
+              items={["Macro-Market Analysis", "Valuation Modeling", "Asset Identification"]}
             />
             <ServiceCard 
-              icon="📊"
-              title="Advisory" 
-              desc="Data-driven strategic property planning to maximize your portfolio growth."
-              items={["ROI Projections", "Trend Analysis", "Risk Assessment"]}
+              index="02"
+              title="Strategic Advisory" 
+              desc="Bespoke planning to optimize your real estate portfolio for maximum tax efficiency and growth."
+              items={["ROI Forecasting", "Portfolio Diversification", "Risk Mitigation"]}
             />
             <ServiceCard 
-              icon="⚖️"
-              title="Legal" 
-              desc="Bulletproof transparency and legal security for every square foot."
-              items={["Title Verification", "RERA Compliance", "Registration"]}
+              index="03"
+              title="Legal Structure" 
+              desc="Absolute transparency and security through rigorous title verification and RERA compliance."
+              items={["Title Forensics", "Registration Management", "Legal Due Diligence"]}
             />
           </motion.div>
         </div>
       </section>
 
-      {/* ================= EXIT RETURNS ================= */}
-      <section className="py-16 md:py-24 bg-indigo-950 text-white relative overflow-hidden px-6">
+      {/* ================= EXIT RETURNS (Data Focus) ================= */}
+      <section className="py-24 bg-slate-950 text-white relative overflow-hidden px-6">
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h2 className="text-2xl md:text-5xl font-bold mb-12 md:mb-16 italic underline decoration-indigo-500 underline-offset-8">
-            Guaranteed Exit Returns
-          </h2>
+          <span className="text-amber-500 font-mono text-xs uppercase tracking-widest">Guaranteed Exit Strategy</span>
+          <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-20 tracking-tighter">Liquidity Projections</h2>
 
-          {/* Flowchart Diagram showing ROI growth over years */}
-          
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-            <ExitCard year="1st Year" roi="15-20%" color="bg-indigo-500" />
-            <ExitCard year="2nd Year" roi="20-30%" color="bg-indigo-600" />
-            <ExitCard year="3rd Year" roi="30-40%" color="bg-indigo-700" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <ExitCard year="YEAR 01" roi="15-20%" desc="Target Liquidity" />
+            <ExitCard year="YEAR 02" roi="20-30%" desc="Strategic Hold" />
+            <ExitCard year="YEAR 03" roi="30-40%" desc="Maximum Exit Alpha" />
           </div>
 
           <motion.div 
-            whileTap={{ scale: 0.95 }}
-            className="bg-emerald-500 text-emerald-950 block md:inline-block px-6 md:px-10 py-4 md:py-5 rounded-xl md:rounded-2xl shadow-2xl font-black text-lg md:text-xl tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-block border border-amber-500/50 bg-amber-500/10 px-10 py-6 rounded-sm"
           >
-            ROI OVER & ABOVE MARKET OFFER
+            <p className="text-amber-500 font-black text-xl md:text-2xl tracking-[0.2em] uppercase">
+              Returns above market benchmark
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= CURATED PORTFOLIO ================= */}
-      <section className="py-16 md:py-24 bg-slate-50 px-6">
+      {/* ================= PORTFOLIO (Curated Style) ================= */}
+      <section className="py-24 bg-white px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">Curated Portfolio</h2>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-slate-950 tracking-tighter">Curated Portfolio</h2>
+              <p className="text-slate-500 mt-4 font-light">A selection of Tier-1 assets currently available for institutional and private acquisition.</p>
+            </div>
+            <div className="text-slate-300 font-mono text-xs hidden md:block">Q1 2026 LISTINGS</div>
+          </div>
 
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-12"
           >
             <PropertyCard 
               img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-              title="Luxury Apartments" 
-              tags={["Residential", "Prime"]} 
+              title="Metropolitan Collection" 
+              tags={["Residential", "Tier 1"]} 
               bhk="2-4 BHK" 
               price="₹50L - 2Cr" 
             />
             <PropertyCard 
               img="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
-              title="Elite Villas" 
-              tags={["Signature", "Gated"]} 
-              bhk="3-5 BHK" 
-              price="₹1Cr - 5Cr" 
+              title="The Signature Estate" 
+              tags={["Ultra-Luxury", "Gated"]} 
+              bhk="4-6 BHK" 
+              price="₹2Cr - 8Cr" 
             />
             <PropertyCard 
               img="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80"
-              title="Executive Flats" 
-              tags={["Modern", "Urban"]} 
-              bhk="1-3 BHK" 
-              price="₹25L - 1Cr" 
+              title="Commercial Plaza" 
+              tags={["High-Yield", "Retail"]} 
+              bhk="Grade A Space" 
+              price="₹1Cr - 5Cr" 
             />
           </motion.div>
         </div>
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="py-12 md:py-24 bg-white px-4 md:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div 
-            whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
-            className="p-8 md:p-12 rounded-2xl md:rounded-[3rem] bg-gradient-to-br from-indigo-600 to-purple-700 text-white shadow-2xl"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 leading-tight">Found Your Future Home?</h2>
-            <p className="text-sm md:text-lg mb-8 md:mb-10 opacity-80 px-2">Schedule a private viewing with our senior property consultants today.</p>
-            <button onClick={() => navigate("/contact")}
-             className="w-full sm:w-auto bg-white text-indigo-600 px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-base md:text-lg active:scale-95 transition-transform shadow-lg">
-              Book a Site Visit
-            </button>
-          </motion.div>
-        </div>
+      <section className="py-32 bg-[#0a0c10] text-center px-6 border-t border-white/5">
+        <motion.div 
+          whileInView={{ opacity: [0, 1] }}
+          className="max-w-4xl mx-auto"
+        >
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-10 tracking-tighter">Secure Your Site Visit.</h2>
+          <p className="text-slate-500 text-lg mb-12 font-light">Privileged viewings for qualified investors and families.</p>
+          <button onClick={() => navigate("/contact")}
+           className="bg-amber-500 text-slate-950 px-16 py-6 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl">
+            Book Site Inventory
+          </button>
+        </motion.div>
       </section>
     </div>
   );
@@ -176,19 +180,19 @@ export default function Property() {
 
 /* ================= COMPONENTS ================= */
 
-function ServiceCard({ icon, title, desc, items }) {
+function ServiceCard({ index, title, desc, items }) {
   return (
     <motion.div 
       variants={fadeInUp}
-      className="bg-white border border-slate-100 p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-sm hover:shadow-md transition-all flex flex-col h-full"
+      className="bg-[#0f1218] p-12 border border-transparent hover:border-amber-500/30 transition-all flex flex-col group"
     >
-      <div className="text-3xl md:text-4xl mb-4 md:mb-6">{icon}</div>
-      <h3 className="text-xl md:text-2xl font-bold mb-2 text-slate-900">{title}</h3>
-      <p className="text-sm md:text-base text-slate-500 mb-6 leading-relaxed flex-grow">{desc}</p>
-      <ul className="space-y-2">
+      <div className="text-amber-500/20 font-mono text-5xl font-black mb-8 group-hover:text-amber-500 transition-colors">{index}</div>
+      <h3 className="text-2xl font-bold text-white mb-4 tracking-tight uppercase">{title}</h3>
+      <p className="text-slate-500 text-sm mb-10 leading-relaxed font-light flex-grow">{desc}</p>
+      <ul className="space-y-4">
         {items.map((item, i) => (
-          <li key={i} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-700">
-            <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full shrink-0" /> {item}
+          <li key={i} className="flex items-center gap-3 text-xs font-medium text-slate-400">
+            <span className="h-[1px] w-4 bg-amber-500 shrink-0" /> {item}
           </li>
         ))}
       </ul>
@@ -196,16 +200,16 @@ function ServiceCard({ icon, title, desc, items }) {
   );
 }
 
-function ExitCard({ year, roi, color }) {
+function ExitCard({ year, roi, desc }) {
   return (
     <motion.div 
-      initial={{ scale: 0.9, opacity: 0 }}
-      whileInView={{ scale: 1, opacity: 1 }}
-      className={`${color} p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] shadow-xl text-center border border-white/10`}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      className="bg-slate-900/50 p-12 rounded-sm border border-white/5 hover:border-amber-500/40 transition-all"
     >
-      <h4 className="text-indigo-200 uppercase tracking-widest text-[10px] md:text-sm font-bold mb-2">{year}</h4>
-      <p className="text-3xl md:text-5xl font-black mb-1 md:mb-2">{roi}</p>
-      <p className="text-indigo-100/60 text-[10px] md:text-xs">Projected Liquidity</p>
+      <h4 className="text-amber-500 font-mono text-xs font-bold mb-4 tracking-[0.2em]">{year}</h4>
+      <p className="text-5xl md:text-6xl font-bold text-white mb-2 tracking-tighter">{roi}</p>
+      <p className="text-slate-500 text-[10px] uppercase tracking-widest">{desc}</p>
     </motion.div>
   );
 }
@@ -214,23 +218,26 @@ function PropertyCard({ img, title, tags, bhk, price }) {
   return (
     <motion.div 
       variants={fadeInUp}
-      className="group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-all h-full flex flex-col"
+      className="group bg-white flex flex-col h-full border border-slate-100 hover:border-amber-500/20 transition-all"
     >
-      <div className="relative h-48 md:h-64 overflow-hidden">
-        <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+      <div className="relative h-72 overflow-hidden bg-slate-200">
+        <img src={img} alt={title} className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" />
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
           {tags.map((tag, i) => (
-            <span key={i} className="bg-white/90 backdrop-blur-md text-indigo-700 text-[8px] md:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+            <span key={i} className="bg-slate-950/80 backdrop-blur-md text-amber-500 text-[9px] font-bold px-3 py-1 rounded-sm uppercase tracking-widest">
               {tag}
             </span>
           ))}
         </div>
       </div>
-      <div className="p-6 md:p-8 text-center flex flex-col flex-grow">
-        <h3 className="text-lg md:text-2xl font-bold text-slate-900 mb-1">{title}</h3>
-        <p className="text-xs md:text-base text-slate-500 font-medium mb-4">{bhk}</p>
-        <div className="bg-slate-50 py-2 md:py-3 rounded-xl md:rounded-2xl mt-auto">
-          <p className="text-emerald-600 font-black text-base md:text-xl">{price}</p>
+      <div className="p-10 flex flex-col flex-grow border-x border-b border-slate-50">
+        <h3 className="text-2xl font-bold text-slate-950 mb-2 tracking-tighter uppercase">{title}</h3>
+        <p className="text-xs text-slate-400 font-mono mb-8">{bhk}</p>
+        <div className="mt-auto pt-6 border-t border-slate-50">
+          <p className="text-slate-950 font-black text-2xl tracking-tighter">{price}</p>
+          <button className="mt-6 w-full py-4 border border-slate-200 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-slate-950 hover:text-white transition-all">
+            View Specification
+          </button>
         </div>
       </div>
     </motion.div>
