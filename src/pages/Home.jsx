@@ -97,17 +97,17 @@ export default function Home() {
 
             <motion.h2
               variants={fadeUp}
-              className="text-xl md:text-4xl font-light mb-10 text-black-600"
+              className="text-xl md:text-4xl font-medium mb-10 text-slate-900"
             >
-              Finance <span className="px-2 text-black-300">|</span>
-              Investment <span className="px-2 text-blue-300">|</span>
+              Finance <span className="px-2 text-slate-900">|</span>
+              Investment <span className="px-2 text-slate-900">|</span>
               Property
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="text-black-600 text-lg leading-relaxed mb-14"
-            >
+             className="text-slate-900 text-lg leading-relaxed mb-12 font-medium"
+      >
               Structured capital solutions, high-yield investment strategies,
               and secure property advisory built for sustainable growth.
             </motion.p>
