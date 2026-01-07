@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, ShieldCheck, Zap, BarChart3, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Animation Variants
 const fadeInUp = {
@@ -18,6 +19,8 @@ const staggerContainer = {
 };
 
 export default function Contact() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full bg-[#0a0c10] text-slate-200 overflow-x-hidden pt-20">
       
@@ -78,14 +81,16 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                <motion.button
-                  whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full bg-amber-500 text-slate-950 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] transition-all"
-                >
-                  Initiate Consultation
-                </motion.button>
+               <motion.button
+  whileHover={{ backgroundColor: "#ffffff", color: "#000000" }}
+  whileTap={{ scale: 0.98 }}
+  type="button"
+  onClick={() => navigate("/payment")}
+  className="w-full bg-amber-500 text-slate-950 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] transition-all"
+>
+  Proceed to Secure Payment
+</motion.button>
+
               </form>
             </motion.div>
 
@@ -125,6 +130,44 @@ export default function Contact() {
           </div>
         </div>
       </section>
+{/* ================= PAYMENT CTA ================= */}
+<section className="py-24 bg-slate-950 border-t border-white/5 px-6">
+  <div className="max-w-5xl mx-auto text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <span className="text-[10px] uppercase tracking-[0.4em] text-slate-500 font-bold">
+        Next Step
+      </span>
+
+      <h3 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mt-6 mb-8">
+        Secure Your <span className="text-amber-500">Consultation</span>
+      </h3>
+
+      <p className="text-slate-400 max-w-2xl mx-auto mb-12 font-light">
+        Consultation slots are confirmed only after payment verification.
+        All transactions are encrypted and processed via Stripe.
+      </p>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        onClick={() => navigate("/payment")}
+        className="inline-flex items-center gap-4 bg-amber-500 text-slate-950 px-12 py-6 rounded-sm text-xs font-bold uppercase tracking-[0.3em]"
+      >
+        Proceed to Payment
+        <ShieldCheck size={18} />
+      </motion.button>
+
+      <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-slate-600 font-mono">
+        PCI DSS • Stripe Secure • Encrypted
+      </p>
+    </motion.div>
+  </div>
+</section>
 
       {/* ================= WORKFLOW DIAGRAM ================= */}
       <section className="py-24 bg-white text-slate-950 px-6">

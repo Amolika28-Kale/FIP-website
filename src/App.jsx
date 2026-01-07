@@ -9,6 +9,7 @@ import Investments from "./pages/Investments";
 import Property from "./pages/Property";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Payment from "./pages/Payment";
 
 export default function App() {
   return (
@@ -22,6 +23,8 @@ export default function App() {
         <Route path="/property" element={<Property />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/payment" element={<Payment />} />
+
 
       </Routes>
 

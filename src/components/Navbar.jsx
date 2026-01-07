@@ -35,20 +35,21 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* LOGO */}
         <NavLink
-          to="/"
-          className="flex items-center gap-2 group"
-          onClick={() => setOpen(false)}
-        >
-          <div className="relative">
-            <div className="w-8 h-8 flex items-center justify-center border border-amber-500/50 text-amber-500 transition-transform duration-500 group-hover:rotate-90">
-              <span className="text-sm font-bold">F</span>
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-amber-500" />
-          </div>
-          <span className="text-xl font-black tracking-tighter text-white ml-1">
-            FIP<span className="text-amber-500">.</span>
-          </span>
-        </NavLink>
+  to="/"
+  className="flex items-center gap-2 group"
+  onClick={() => setOpen(false)}
+>
+  <div className="relative">
+    <div className="w-8 h-8 flex items-center justify-center border border-amber-500/50 text-amber-500">
+      <span className="text-sm font-bold">F</span>
+    </div>
+    <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-amber-500" />
+  </div>
+  <span className="text-xl font-black tracking-tighter text-white ml-1">
+    FIP<span className="text-amber-500">.</span>
+  </span>
+</NavLink>
+
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-10">

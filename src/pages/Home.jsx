@@ -27,12 +27,13 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % bgImages.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % bgImages.length);
+  }, 3500); // ⬅ slightly faster
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <div id="home" className="w-full bg-[#0a0c10] text-slate-200 overflow-x-hidden selection:bg-amber-500 selection:text-black">
@@ -45,7 +46,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "linear" }}
+transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0 z-0"
             style={{
               backgroundImage: `url(${bgImages[index]})`,
