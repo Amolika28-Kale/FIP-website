@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/fip.png";
+import logo from "../assets/FIP.png";
 
 /* ================= BRAND ================= */
 const BRAND = {

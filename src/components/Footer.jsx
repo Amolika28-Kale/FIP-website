@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import logo from "../assets/fip.png";
+import logo from "../assets/FIP.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
