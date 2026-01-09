@@ -1,120 +1,156 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+import logo from "../assets/fip.png";
+
+/* ================= BRAND ================= */
+const BRAND = {
+  navy: "#0B2A5B",
+  navyDark: "#071C3F",
+  text: "#0F172A",
+  muted: "#475569",
+};
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
+  /* Scroll detection */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
+  /* Lock body scroll */
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
   }, [open]);
 
+  const navItems = ["Home", "Finance", "Investments", "Property", "About"];
+
   const linkClass = ({ isActive }) =>
-    `relative py-1 text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 group
-     ${isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-700"}`;
+    `relative text-[11px] uppercase tracking-[0.28em] font-semibold transition-colors duration-300
+     ${isActive ? "text-[#0B2A5B]" : "text-slate-600 hover:text-slate-900"}`;
 
   return (
     <header
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-blue-100 py-3 shadow-sm"
-          : "bg-transparent py-5"
+          ? "bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.18)] py-3"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        
-        {/* LOGO */}
+      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
+
+        {/* ================= LOGO ================= */}
         <NavLink
           to="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 group"
+          className="relative z-[110] flex items-center"
         >
-          <div className="relative">
-            <div className="w-8 h-8 flex items-center justify-center border border-blue-500 text-blue-600 bg-white">
-              <span className="text-sm font-bold">F</span>
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-blue-600" />
-          </div>
-          <span className="text-xl font-black tracking-tighter text-slate-900 ml-1">
-            FIP<span className="text-blue-600">.</span>
-          </span>
+          <img
+            src={logo}
+            alt="FIP Consultancy"
+            className={`transition-all duration-500 object-contain ${
+              scrolled ? "h-8" : "h-10"
+            }`}
+          />
         </NavLink>
 
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-10">
-          {["Home", "Finance", "Investments", "Property", "About"].map((item) => (
-            <NavLink
-              key={item}
-              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-              className={linkClass}
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full" />
-            </NavLink>
-          ))}
+        {/* ================= DESKTOP NAV ================= */}
+        <nav className="hidden md:flex items-center gap-14">
+          {navItems.map((item) => {
+            const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            const active = location.pathname === path;
+
+            return (
+              <NavLink key={item} to={path} className={linkClass}>
+                {item}
+
+                {/* underline */}
+                <span
+                  className={`absolute -bottom-2 left-0 h-[2px] bg-[#0B2A5B] transition-all duration-300 ${
+                    active ? "w-full" : "w-0 hover:w-full"
+                  }`}
+                />
+              </NavLink>
+            );
+          })}
         </nav>
 
-        {/* DESKTOP CTA */}
+        {/* ================= DESKTOP CTA ================= */}
         <div className="hidden md:block">
           <NavLink
             to="/contact"
-            className="group flex items-center gap-3 bg-blue-600 text-white px-6 py-2 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition-all active:scale-95"
+            className="group relative flex items-center gap-3 px-10 py-3 rounded-full
+                       text-[10px] uppercase tracking-[0.25em] font-semibold
+                       bg-[#0B2A5B] text-white
+                       transition-all duration-300 hover:bg-[#071C3F]
+                       hover:shadow-[0_18px_45px_-15px_rgba(11,42,91,0.6)]
+                       active:scale-95"
           >
-            Consultation
-            <ChevronRight
+            <span>Consultation</span>
+            <ArrowRight
               size={14}
-              className="group-hover:translate-x-1 transition-transform"
+              className="group-hover:translate-x-1 transition-transform duration-300"
             />
           </NavLink>
         </div>
 
-        {/* MOBILE TOGGLE */}
+        {/* ================= MOBILE TOGGLE ================= */}
         <button
-          className="md:hidden p-2 text-slate-800 relative z-[110]"
+          className="md:hidden p-2 text-slate-900 relative z-[110]"
           onClick={() => setOpen(!open)}
           aria-label="Toggle Menu"
         >
-          {open ? <X size={26} /> : <Menu size={26} />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* MOBILE FULLSCREEN MENU */}
+      {/* ================= MOBILE MENU ================= */}
       <div
-        className={`fixed inset-0 z-[105] bg-white md:hidden transition-all duration-500 ${
-          open
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-full pointer-events-none"
+        className={`fixed inset-0 z-[105] bg-[#071C3F] md:hidden transition-all duration-500 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <div className="flex flex-col justify-center h-full px-10 gap-10">
-          {["Home", "Finance", "Investments", "Property", "About"].map((item) => (
+        <div className="flex flex-col justify-center h-full px-12 gap-12">
+
+          <p className="text-slate-400 text-[10px] uppercase tracking-[0.4em] font-semibold">
+            Navigation
+          </p>
+
+          {navItems.map((item, i) => (
             <NavLink
               key={item}
               to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
               onClick={() => setOpen(false)}
-              className="text-3xl font-light text-slate-900 tracking-tight border-b border-blue-100 pb-4 flex justify-between items-center group"
+              style={{ transitionDelay: `${i * 70}ms` }}
+              className={`text-4xl font-medium text-white flex justify-between items-center
+                          transition-all duration-500 ${
+                            open ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                          }`}
             >
-              {item}
-              <ChevronRight className="text-blue-600 opacity-0 group-hover:opacity-100 transition-all" />
+              <span className="hover:text-slate-300 transition-colors">
+                {item}
+              </span>
+              <ChevronRight className="text-slate-400" />
             </NavLink>
           ))}
 
           <NavLink
             to="/contact"
             onClick={() => setOpen(false)}
-            className="mt-10 bg-blue-600 text-white py-5 rounded-sm text-center font-bold text-sm uppercase tracking-[0.25em] hover:bg-blue-700 transition"
+            className={`mt-8 bg-white text-[#0B2A5B] py-5 rounded-xl text-center
+                        font-semibold text-xs uppercase tracking-[0.25em]
+                        transition-all duration-500 ${
+                          open ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                        }`}
           >
-            Start Your Journey
+            Start Consultation
           </NavLink>
         </div>
       </div>

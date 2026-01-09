@@ -3,21 +3,25 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+/* ================= BRAND ================= */
+const COLORS = {
+  navy: "#0B2A5B",
+  royal: "#1E3A8A",
+  bg: "#F8FAFC",
+  text: "#0F172A",
+  muted: "#475569",
+};
+
 const bgImages = [
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070",
+  "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071",
+  "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973",
 ];
 
 /* ================= ANIMATIONS ================= */
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-const fade = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8 } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
 const stagger = {
@@ -25,31 +29,39 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
+const floatSlow = {
+  animate: {
+    y: [0, -10, 0],
+    transition: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+  },
+};
+
 export default function Home() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setIndex((prev) => (prev + 1) % bgImages.length),
-      4500
+    const timer = setInterval(
+      () => setIndex((i) => (i + 1) % bgImages.length),
+      6000
     );
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="w-full bg-[#f5f9ff] text-slate-700 overflow-x-hidden">
+    <div className="bg-[#F8FAFC] text-slate-800 overflow-x-hidden">
 
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-
+      {/* ======================================================
+        HERO – BOARDROOM STYLE
+      ====================================================== */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
+            transition={{ duration: 1.6 }}
             className="absolute inset-0"
             style={{
               backgroundImage: `url(${bgImages[index]})`,
@@ -60,209 +72,212 @@ export default function Home() {
         </AnimatePresence>
 
         {/* overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-900/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-white/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2A5B]/95 via-[#0B2A5B]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/70" />
 
-        {/* floating glow */}
+        {/* floating brand aura */}
         <motion.div
-          animate={{ opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 6, repeat: Infinity }}
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-3xl"
+          variants={floatSlow}
+          animate="animate"
+          className="absolute -right-48 top-1/3 w-[520px] h-[520px] bg-[#1E3A8A]/10 blur-3xl rounded-full"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="max-w-3xl"
-          >
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 py-32">
 
-            <motion.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-3 bg-blue-100 border border-blue-200 px-4 py-2 mb-10"
-            >
-              <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
-              <span className="text-xs font-bold tracking-[0.35em] uppercase text-blue-700">
-                Trusted Financial Advisory
+          {/* LEFT */}
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
+              <span className="h-px w-16 bg-[#1E3A8A]" />
+              <span className="uppercase text-xs tracking-[0.45em] font-semibold text-[#1E3A8A]">
+                FIP Consultancy
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="text-7xl md:text-[9rem] font-light tracking-tighter text-slate-900"
+              className="text-7xl md:text-9xl font-light leading-none text-[#0F172A]"
             >
-              FIP<span className="text-blue-600 font-bold">.</span>
+              FIP
             </motion.h1>
-
-            <motion.h2
-              variants={fadeUp}
-              className="text-xl md:text-4xl font-medium mb-10 text-slate-900"
-            >
-              Finance <span className="px-2 text-slate-900">|</span>
-              Investment <span className="px-2 text-slate-900">|</span>
-              Property
-            </motion.h2>
 
             <motion.p
               variants={fadeUp}
-             className="text-slate-900 text-lg leading-relaxed mb-12 font-medium"
-      >
-              Structured capital solutions, high-yield investment strategies,
-              and secure property advisory built for sustainable growth.
+              className="mt-6 text-xl font-medium text-slate-900"
+            >
+              Finance | Investment | Property
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex gap-4">
+            <motion.p
+              variants={fadeUp}
+              className="mt-8 max-w-xl text-lg text-slate-900 leading-relaxed"
+            >
+             The FIP Model is a comprehensive financial ecosystem designed to support individuals, businesses, and investors through structured finance solutions, high-yield investments, and professionally managed property services.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="mt-14 flex gap-6">
               <button
                 onClick={() => navigate("/contact")}
-                className="bg-blue-600 text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-blue-700 transition"
+                className="bg-[#0B2A5B] text-white px-14 py-4 font-semibold tracking-widest hover:bg-[#1E3A8A] transition"
               >
-                Inquire Now
+                CONSULT WITH US
               </button>
               <button
                 onClick={() => navigate("/about")}
-                className="border border-blue-300 px-10 py-4 font-bold uppercase tracking-widest text-blue-700 hover:bg-blue-50 transition"
+                className="border border-[#0B2A5B] px-14 py-4 font-semibold tracking-widest text-[#0B2A5B] hover:bg-[#F1F5F9] transition"
               >
-                Our Philosophy
+                OUR MODEL
               </button>
             </motion.div>
-
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================= FINANCE ================= */}
-      <section className="py-32 bg-white border-y">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-16">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">
-              Capital Solutions
-            </h2>
-            <p className="text-slate-600 mb-8">
-              Flexible financing and structured credit designed for scale.
-            </p>
-            <div className="h-1 w-24 bg-blue-600" />
           </motion.div>
 
-          <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
+          {/* RIGHT – TRUST METRICS */}
+          <motion.div
+            variants={floatSlow}
+            animate="animate"
+            className="hidden lg:grid grid-cols-2 gap-8 self-center"
+          >
             {[
-              "Personal Loans",
-              "Business Finance",
-              "Asset-Based Lending",
-              "Export & Trade Finance",
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                className="bg-blue-50 p-8 border border-blue-100 hover:shadow-xl transition"
+              ["₹10Cr+", "Capital Facilitated"],
+              ["40%", "Target ROI"],
+              ["7 Years", "Loan Tenure"],
+              ["100+", "Clients & Investors"],
+            ].map(([value, label]) => (
+              <div
+                key={label}
+                className="bg-white/90 backdrop-blur border border-slate-200 p-8"
               >
-                <h3 className="text-xl font-bold text-blue-700 mb-3">
-                  {item}
-                </h3>
-                <p className="text-sm text-slate-600">
-                  Transparent documentation with fast approvals.
+                <h3 className="text-4xl font-bold text-[#0B2A5B]">{value}</h3>
+                <p className="uppercase tracking-widest text-xs mt-2 text-slate-500">
+                  {label}
                 </p>
-              </motion.div>
+              </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ================= INVESTMENTS ================= */}
-      <section className="py-32 bg-[#f0f6ff]">
+      {/* ======================================================
+        FINANCE
+      ====================================================== */}
+      <section className="py-32 bg-white border-y">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            className="text-6xl font-bold mb-20 text-slate-900"
+            className="text-5xl font-bold mb-20 text-[#0B2A5B]"
           >
-            Investment Performance
+            Finance Solutions
           </motion.h2>
 
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="relative border-l border-slate-300 pl-12 space-y-14">
             {[
-              "Short Term Growth",
-              "Wealth Creation",
-              "Monthly Income",
-              "Equity Expansion",
-            ].map((p, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="border-l-4 border-blue-600 pl-6"
-              >
-                <div className="text-4xl font-black text-blue-600 mb-2">
-                  Up to 40%
+              "Unsecured & Secured Loans up to ₹10 Lakhs",
+              "Business & Project Finance up to ₹10 Crores",
+              "Land & Property Based Funding",
+              "Gold, Trade & Export Finance",
+            ].map((item, i) => (
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible">
+                <span className="absolute -left-[7px] mt-2 w-3 h-3 bg-[#0B2A5B] rounded-full" />
+                <div className="bg-[#F8FAFC] border border-slate-200 p-8">
+                  <p className="font-medium text-slate-800">{item}</p>
                 </div>
-                <p className="font-bold text-slate-800">{p}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= PROPERTY ================= */}
-      <section className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <h2 className="text-6xl font-bold mb-10 text-slate-900">
-              Property <span className="text-blue-600">Advisory</span>
-            </h2>
+      {/* ======================================================
+        INVESTMENTS
+      ====================================================== */}
+      <section className="py-32 bg-[#F1F5F9]">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" className="text-5xl font-bold mb-20 text-[#0B2A5B]">
+            Investment Opportunities
+          </motion.h2>
 
-            <ul className="space-y-6 text-slate-600">
-              <li>✔ Legal Due Diligence</li>
-              <li>✔ Strategic Property Investment</li>
-              <li>✔ High ROI Buy & Sell Advisory</li>
-            </ul>
-          </div>
-
-          <div className="bg-blue-50 p-10 border border-blue-100">
-            <h4 className="uppercase tracking-widest text-xs text-blue-600 mb-8">
-              Growth Projection
-            </h4>
-
-            {[20, 45, 80].map((v, i) => (
-              <div key={i} className="mb-6">
-                <div className="flex justify-between text-sm mb-2">
-                  <span>Year {i + 1}</span>
-                  <span className="font-bold text-blue-600">+{v}%</span>
-                </div>
-                <div className="h-1 bg-blue-100">
-                  <div className="h-full bg-blue-600" style={{ width: `${v}%` }} />
-                </div>
-              </div>
+          <div className="grid md:grid-cols-4 gap-10">
+            {[
+              ["20–25%", "Short-Term Returns"],
+              ["30–40%", "Land Investments"],
+              ["10%", "Rental Yield"],
+              ["15–20%", "Shares-Backed"],
+            ].map(([val, label]) => (
+              <motion.div
+                key={label}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -6 }}
+                className="bg-white border border-slate-200 p-10"
+              >
+                <h3 className="text-5xl font-bold text-[#0B2A5B]">{val}</h3>
+                <p className="mt-4 text-slate-600 font-medium">{label}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-      {/* ================= CTA ================= */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="py-32 bg-blue-600 text-center"
-      >
-        <h2 className="text-6xl font-black text-white mb-12">
-          Let’s build your financial future
-        </h2>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          className="bg-white text-blue-600 px-14 py-6 font-bold uppercase tracking-widest hover:bg-blue-50 transition"
-          onClick={() => navigate("/contact")}
-        >
-          Get Consultation
-        </motion.button>
-      </motion.section>
 
+      {/* ======================================================
+        PROPERTY
+      ====================================================== */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
+          <div>
+            <h2 className="text-5xl font-bold mb-10 text-[#0B2A5B]">
+              Property Advisory
+            </h2>
+            <ul className="space-y-6 text-lg text-slate-700">
+              <li>✔ Sale & Purchase Advisory</li>
+              <li>✔ Rental Income & Asset Management</li>
+              <li>✔ Assured Exit Strategies</li>
+              <li>✔ Fully Registered Transactions</li>
+            </ul>
+          </div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            className="bg-[#0B2A5B] text-white p-14"
+          >
+            <h4 className="uppercase tracking-widest text-xs mb-8">
+              Why FIP
+            </h4>
+            <ul className="space-y-6 text-lg font-medium">
+              <li>Integrated Financial Ecosystem</li>
+              <li>Asset-Backed & ROI-Defined</li>
+              <li>Professionally Managed</li>
+              <li>Transparent & Compliant</li>
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ======================================================
+        CTA
+      ====================================================== */}
+      <section className="relative py-28 bg-[#0B2A5B] text-center overflow-hidden">
+        <motion.div
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        />
+
+        <h2 className="relative z-10 text-5xl font-bold text-white mb-10">
+          Trusted by investors. Built for long-term wealth.
+        </h2>
+
+        <motion.button
+          whileHover={{ scale: 1.06 }}
+          onClick={() => navigate("/contact")}
+          className="relative z-10 bg-white text-[#0B2A5B] px-16 py-5 font-semibold tracking-widest"
+        >
+          CONNECT WITH FIP
+        </motion.button>
+      </section>
 
     </div>
   );

@@ -19,10 +19,11 @@ export default function Property() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-[#f5f9ff] text-slate-800 overflow-x-hidden pt-20">
+    <div className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-x-hidden pt-24">
 
       {/* ================= HERO ================= */}
-      <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-white border-b border-blue-100">
+      <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden border-b border-slate-200 bg-gradient-to-br from-white via-[#F1F5F9] to-white">
+
         <motion.div
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
@@ -30,48 +31,51 @@ export default function Property() {
           className="absolute inset-0 z-0"
         >
           <img
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80"
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
             alt="Property"
-            className="w-full h-full object-cover opacity-15"
+            className="w-full h-full object-cover opacity-[0.08]"
           />
         </motion.div>
+
+        {/* Corporate Wash */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B2C6F]/10 via-transparent to-[#1E4DB7]/10" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
             <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-5 py-1 text-[11px] font-semibold uppercase tracking-widest text-blue-700 bg-blue-100 rounded-full">
-                Property Advisory
+              <span className="inline-block px-6 py-2 text-[10px] font-bold uppercase tracking-[0.35em] text-[#0B2C6F] bg-white border border-[#0B2C6F]/20">
+                Property Solutions
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-7xl font-extrabold tracking-tight text-slate-900"
+              className="text-4xl md:text-7xl font-light tracking-tight text-[#0B2C6F]"
             >
-              Smart Property
-              <span className="text-blue-600"> Investments</span>
+              Profitable <span className="font-bold">Property Investments</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="max-w-2xl mx-auto mt-6 text-slate-600 text-base md:text-lg"
+              className="max-w-3xl mx-auto mt-6 text-[#475569] text-base md:text-lg font-light"
             >
-              Acquire verified residential & commercial assets with structured
-              exits and long-term value creation.
+              End-to-end real estate solutions focused on profitability,
+              compliance, and long-term value creation.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= SERVICES ================= */}
-      <section className="py-24 bg-white">
+      {/* ================= PROPERTY ADVISORY ================= */}
+      <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
+
           <div className="text-center mb-20">
-            <h2 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-4">
-              Our Process
+            <h2 className="text-[11px] uppercase tracking-[0.35em] text-[#0B2C6F] font-bold mb-4">
+              Real Estate Advisory & Management
             </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-slate-900">
-              End-to-End Property Advisory
+            <h3 className="text-3xl md:text-5xl font-bold text-[#0B2C6F]">
+              Complete Property Lifecycle Support
             </h3>
           </div>
 
@@ -84,107 +88,113 @@ export default function Property() {
           >
             <ServiceCard
               index="01"
-              title="Consultation"
-              desc="Understand your investment goals and match them with market-ready opportunities."
-              items={["Market Analysis", "Budget Planning", "Asset Shortlisting"]}
+              title="Buy & Sell Advisory"
+              desc="Professional guidance for residential and commercial transactions."
+              items={[
+                "Residential sales",
+                "Commercial sales",
+                "Negotiation & closure support",
+              ]}
             />
             <ServiceCard
               index="02"
-              title="Investment Strategy"
-              desc="Optimized planning to balance returns, risk, and liquidity."
-              items={["ROI Planning", "Risk Assessment", "Portfolio Mix"]}
+              title="Rental Income Solutions"
+              desc="Optimized rental strategies with complete asset management."
+              items={[
+                "Rental income planning",
+                "Property management",
+                "Tenant sourcing",
+              ]}
             />
             <ServiceCard
               index="03"
-              title="Legal & Closure"
-              desc="Complete legal verification with transparent documentation."
-              items={["Title Check", "RERA Compliance", "Registration Support"]}
+              title="Long-Term Appreciation"
+              desc="Strategic planning to maximize asset value over time."
+              items={[
+                "Location-based growth",
+                "Exit timing strategy",
+                "Capital appreciation",
+              ]}
             />
           </motion.div>
         </div>
       </section>
 
-      {/* ================= RETURNS ================= */}
-      <section className="py-24 bg-[#f5f9ff]">
+      {/* ================= ASSURED EXIT ================= */}
+      <section className="py-28 bg-[#F1F5F9]">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <span className="text-blue-600 text-xs uppercase tracking-widest font-semibold">
-            Expected Returns
+
+          <span className="text-[#0B2C6F] text-[11px] uppercase tracking-widest font-bold">
+            Assured Exit Model
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mt-4 mb-16">
-            Growth & Exit Outlook
+
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0B2C6F] mt-4 mb-16">
+            Attractive Exit Returns
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ExitCard year="Year 1" roi="12–18%" desc="Stabilization Phase" />
-            <ExitCard year="Year 2" roi="18–25%" desc="Growth Phase" />
-            <ExitCard year="Year 3" roi="25–35%" desc="Exit Window" />
+            <ExitCard year="1st Year" roi="15–20%" desc="Early appreciation phase" />
+            <ExitCard year="2nd Year" roi="20–30%" desc="Growth acceleration phase" />
+            <ExitCard year="3rd Year" roi="30–40%" desc="Optimized exit opportunity" />
           </div>
+
+          <p className="mt-12 text-[#475569] max-w-3xl mx-auto text-sm">
+            Returns are <strong>above prevailing market offers</strong>,
+            structured through disciplined acquisition and exit strategies.
+          </p>
         </div>
       </section>
 
-      {/* ================= PORTFOLIO ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
-                Available Properties
-              </h2>
-              <p className="text-slate-500 mt-4 max-w-xl">
-                Hand-picked assets from trusted developers across Tier-1 cities.
-              </p>
-            </div>
-            <span className="text-xs text-slate-400 font-mono hidden md:block">
-              Updated Q1 2026
-            </span>
-          </div>
+      {/* ================= TRANSPARENCY ================= */}
+      <section className="py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0B2C6F] mb-16">
+            Transparency & Legal Assurance
+          </h2>
 
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10"
           >
-            <PropertyCard
-              img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-              title="Urban Residences"
-              tags={["Residential", "Metro"]}
-              bhk="2–4 BHK"
-              price="₹50L – 2Cr"
+            <LegalCard
+              title="Registered Ownership"
+              desc="All property documents are registered in the client’s name with full legal compliance."
             />
-            <PropertyCard
-              img="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
-              title="Signature Villas"
-              tags={["Luxury", "Gated"]}
-              bhk="4–6 BHK"
-              price="₹2Cr – 8Cr"
-            />
-            <PropertyCard
-              img="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80"
-              title="Commercial Spaces"
-              tags={["Retail", "Office"]}
-              bhk="Grade-A"
-              price="₹1Cr – 5Cr"
+            <LegalCard
+              title="Defined ROI Structure"
+              desc="Clear and transparent ROI terms communicated upfront."
             />
           </motion.div>
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-      <section className="py-28 bg-gradient-to-r from-blue-600 to-sky-500 text-center text-white">
-        <motion.div whileInView={{ opacity: [0, 1] }} className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-6xl font-bold mb-8">
-            Schedule a Property Consultation
+      {/* ================= WHY FIP ================= */}
+      <section className="py-28 bg-[#0B2C6F] text-center text-white">
+        <motion.div
+          whileInView={{ opacity: 1, y: [20, 0] }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto px-6"
+        >
+          <h2 className="text-3xl md:text-6xl font-bold mb-12">
+            Why Choose the FIP Model
           </h2>
-          <p className="text-blue-100 mb-10">
-            Speak with our advisors to shortlist properties aligned with your goals.
-          </p>
+
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-blue-50 mb-14 text-sm">
+            <li>✓ Integrated Finance, Investment & Property ecosystem</li>
+            <li>✓ Transparent structures with defined ROI</li>
+            <li>✓ Asset-backed, professionally managed opportunities</li>
+            <li>✓ Client-first, legally compliant processes</li>
+          </ul>
+
           <button
             onClick={() => navigate("/contact")}
-            className="bg-white text-blue-700 px-14 py-5 rounded-full font-bold uppercase tracking-wider hover:bg-blue-50 transition"
+            className="bg-white text-[#0B2C6F] px-14 py-5 font-bold uppercase tracking-[0.25em] hover:bg-slate-100 transition shadow-xl"
           >
-            Book Consultation
+            Speak With a Property Advisor
           </button>
         </motion.div>
       </section>
@@ -198,15 +208,15 @@ function ServiceCard({ index, title, desc, items }) {
   return (
     <motion.div
       variants={fadeInUp}
-      className="bg-white border border-blue-100 p-10 rounded-xl hover:shadow-lg transition"
+      className="bg-white border border-slate-200 p-10 hover:border-[#0B2C6F] transition shadow-sm hover:shadow-lg"
     >
-      <div className="text-blue-600 font-bold text-xl mb-4">{index}</div>
-      <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-slate-500 text-sm mb-6">{desc}</p>
-      <ul className="space-y-3 text-sm text-slate-600">
+      <div className="text-[#0B2C6F] font-bold text-2xl mb-4">{index}</div>
+      <h3 className="text-xl font-bold mb-3 text-[#0B2C6F]">{title}</h3>
+      <p className="text-[#475569] text-sm mb-6">{desc}</p>
+      <ul className="space-y-3 text-sm text-[#475569]">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-500 rounded-full" /> {item}
+            <span className="w-2 h-2 bg-[#0B2C6F]" /> {item}
           </li>
         ))}
       </ul>
@@ -217,51 +227,24 @@ function ServiceCard({ index, title, desc, items }) {
 function ExitCard({ year, roi, desc }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      className="bg-white p-10 rounded-xl border border-blue-100"
+      variants={fadeInUp}
+      className="bg-white p-10 border border-slate-200 hover:border-[#0B2C6F] transition shadow-sm hover:shadow-lg"
     >
-      <h4 className="text-blue-600 text-xs uppercase font-semibold mb-3">
-        {year}
-      </h4>
-      <p className="text-4xl font-bold text-slate-900 mb-2">{roi}</p>
-      <p className="text-slate-500 text-sm">{desc}</p>
+      <h4 className="text-[#0B2C6F] text-xs uppercase font-bold mb-3">{year}</h4>
+      <p className="text-4xl font-bold text-[#0F172A] mb-2">{roi}</p>
+      <p className="text-[#475569] text-sm">{desc}</p>
     </motion.div>
   );
 }
 
-function PropertyCard({ img, title, tags, bhk, price }) {
+function LegalCard({ title, desc }) {
   return (
     <motion.div
       variants={fadeInUp}
-      className="bg-white rounded-xl border border-blue-100 overflow-hidden hover:shadow-lg transition"
+      className="bg-[#F1F5F9] border border-slate-200 p-10"
     >
-      <div className="h-64 overflow-hidden">
-        <img src={img} alt={title} className="w-full h-full object-cover hover:scale-105 transition duration-700" />
-      </div>
-
-      <div className="p-8">
-        <div className="flex gap-2 mb-4">
-          {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-[10px] uppercase tracking-widest bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-        <p className="text-sm text-slate-500 mt-1">{bhk}</p>
-
-        <div className="mt-6 pt-6 border-t">
-          <p className="text-2xl font-bold text-blue-600">{price}</p>
-          <button className="mt-4 w-full py-3 text-sm font-bold border border-blue-200 rounded-lg hover:bg-blue-600 hover:text-white transition">
-            View Details
-          </button>
-        </div>
-      </div>
+      <h3 className="text-xl font-bold text-[#0B2C6F] mb-4">{title}</h3>
+      <p className="text-[#475569] text-sm">{desc}</p>
     </motion.div>
   );
 }
