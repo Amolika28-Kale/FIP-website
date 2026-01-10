@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 /* ================= ANIMATIONS ================= */
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
+const stagger = {
+  hidden: {},
   visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.14 },
   },
 };
 
@@ -28,162 +27,176 @@ export default function Investments() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden pt-24">
+    <div className="bg-[#F8FAFC] text-[#0F172A] overflow-x-hidden pt-28">
 
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden border-b border-blue-100 bg-gradient-to-br from-white via-[#F1F5F9] to-white px-6">
+      {/* ======================================================
+        HERO
+      ====================================================== */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-white border-b border-slate-200">
 
-        {/* Ambient Corporate Wash */}
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.25, 0.4, 0.25] }}
-          transition={{ duration: 14, repeat: Infinity }}
-          className="absolute -top-32 -left-32 w-[520px] h-[520px] bg-[#0B2C6F]/20 blur-[140px] rounded-full"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] }}
-          transition={{ duration: 16, repeat: Infinity }}
-          className="absolute bottom-[-220px] right-[-140px] w-[520px] h-[520px] bg-[#1E4DB7]/20 blur-[160px] rounded-full"
-        />
+        {/* Institutional Ambient Wash */}
+        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] bg-[#0B2C6F]/10 blur-[140px]" />
+        <div className="absolute bottom-[-220px] right-[-140px] w-[520px] h-[520px] bg-[#1E40AF]/10 blur-[160px]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="px-6 py-2 border border-[#0B2C6F]/30 text-[#0B2C6F] text-[10px] uppercase tracking-[0.4em] font-bold bg-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+
+            <motion.div variants={fadeUp} className="mb-8 flex justify-center">
+              <span className="px-6 py-2 border border-[#0B2C6F]/30 text-[#0B2C6F] text-[10px] uppercase tracking-[0.45em] font-semibold bg-white">
                 Asset Backed Investments
               </span>
             </motion.div>
 
             <motion.h1
-              variants={fadeInUp}
-              className="text-5xl md:text-8xl font-light mb-6 tracking-tight text-[#0B2C6F]"
+              variants={fadeUp}
+              className="text-6xl md:text-8xl font-light tracking-tight text-[#0F172A]"
             >
-              Smart <span className="font-bold">Investments</span>
+              Smart{" "}
+              <span className="font-bold text-[#0B2C6F]">Investments</span>
             </motion.h1>
 
             <motion.p
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto text-[#475569] text-base md:text-xl font-light leading-relaxed"
+              variants={fadeUp}
+              className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-600 leading-relaxed"
             >
               Strategic investment opportunities for short-term gains and
-              long-term wealth creation — backed by tangible assets and
-              professional management.
+              long-term wealth creation — structured with asset security,
+              professional governance, and transparent execution.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= WHY INVEST ================= */}
-      <section className="py-28 bg-white px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* ======================================================
+        WHY INVEST
+      ====================================================== */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
+            variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-12"
           >
-            <WhyCard icon="01" title="Asset Backed" desc="All investments are secured against land, property, or tangible assets." />
-            <WhyCard icon="02" title="High Returns" desc="Carefully structured opportunities offering 10%–40% annual ROI." />
-            <WhyCard icon="03" title="Expert Management" desc="Transparent, compliant, and professionally managed portfolios." />
+            <WhyCard
+              index="01"
+              title="Asset Backed"
+              desc="Every investment is secured against registered land, property, or tangible assets."
+            />
+            <WhyCard
+              index="02"
+              title="High Yield Focus"
+              desc="Structured opportunities delivering 10%–40% annualized returns."
+            />
+            <WhyCard
+              index="03"
+              title="Professional Governance"
+              desc="Transparent, compliant, and professionally managed investment execution."
+            />
           </motion.div>
         </div>
       </section>
 
-      {/* ================= INVESTMENT TYPES ================= */}
-      <section className="py-28 bg-[#F1F5F9] px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* ======================================================
+        INVESTMENT OPTIONS
+      ====================================================== */}
+      <section className="py-32 bg-[#F1F5F9] border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
 
-          <div className="mb-20 max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[#0B2C6F] mb-4">
-              Investment Options
-            </h2>
-            <p className="text-[#475569] font-light">
-              Structured portfolios aligned with your financial goals and risk appetite.
-            </p>
-          </div>
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            className="text-5xl font-bold mb-20 text-[#0B2C6F]"
+          >
+            Investment Opportunities
+          </motion.h2>
 
           <motion.div
+            variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10"
+            className="grid lg:grid-cols-2 gap-14"
           >
-
             <InvestmentCard
               rate="20–25% PA"
               title="Short-Term Investments"
-              subtitle="Secure opportunities for quick capital growth."
-              data={{ period: "6–12 Months", asset: "Asset Based", risk: "Moderate" }}
+              subtitle="Capital-efficient opportunities for faster exits."
+              data={{ period: "6–12 Months", asset: "Asset Backed", risk: "Moderate" }}
               features={[
-                "Land investments",
-                "Residential properties",
-                "Commercial assets",
-                "High liquidity exits",
+                "Land-based investments",
+                "Residential & commercial assets",
+                "Defined exit timelines",
+                "High liquidity focus",
               ]}
             />
 
             <InvestmentCard
               rate="30–40% PA"
               title="Long-Term Investments"
-              subtitle="Land-focused strategies with higher appreciation."
+              subtitle="Appreciation-focused land investment strategies."
               data={{ period: "3 Years", asset: "Land Assets", risk: "Strategic" }}
               features={[
-                "Land acquisition",
-                "Capital appreciation",
-                "Planned tenure exits",
-                "Secure ownership",
+                "Land acquisition projects",
+                "Planned appreciation cycles",
+                "Secure ownership structures",
+                "Capital growth focus",
               ]}
             />
 
             <InvestmentCard
               rate="Up to 10% PA"
               title="Monthly Rental Income"
-              subtitle="Stable monthly income with asset appreciation."
-              data={{ period: "Monthly", asset: "Property Based", risk: "Low" }}
+              subtitle="Stable monthly cash flow with asset appreciation."
+              data={{ period: "Monthly", asset: "Property", risk: "Low" }}
               features={[
-                "Flats & shops",
-                "Commercial rentals",
-                "Consistent cash flow",
-                "Long-term value",
+                "Residential & commercial rentals",
+                "Predictable income stream",
+                "Long-term value creation",
+                "Low volatility",
               ]}
             />
 
             <InvestmentCard
               rate="15–20% PA"
               title="Investment Against Shares"
-              subtitle="Profit participation with downside protection."
-              data={{ period: "Variable", asset: "Shares / Equity", risk: "Balanced" }}
+              subtitle="Downside-protected equity participation."
+              data={{ period: "Variable", asset: "Equity", risk: "Balanced" }}
               features={[
-                "Minimum assured ROI",
-                "Profit sharing model",
-                "Client-aligned returns",
-                "Upside participation",
+                "Minimum assured returns",
+                "Profit participation model",
+                "Capital protection structure",
+                "Aligned investor interests",
               ]}
             />
-
           </motion.div>
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-      <section className="py-28 bg-[#0B2C6F] text-white text-center px-6">
+      {/* ======================================================
+        CTA
+      ====================================================== */}
+      <section className="relative py-28 bg-[#0B2C6F] text-center overflow-hidden">
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        />
+
+        <h2 className="relative z-10 text-5xl font-bold text-white mb-10">
+          Invest with confidence. Grow with discipline.
+        </h2>
+
+        <motion.button
+          whileHover={{ scale: 1.06 }}
+          onClick={() => navigate("/contact")}
+          className="relative z-10 bg-white text-[#0B2C6F] px-16 py-5 font-semibold tracking-widest"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-10 tracking-tight">
-            Invest with Confidence
-          </h2>
-          <button
-            onClick={() => navigate("/contact")}
-            className="bg-white text-[#0B2C6F] px-14 py-5 font-bold text-xs uppercase tracking-[0.3em] hover:bg-slate-100 transition shadow-xl"
-          >
-            Speak With Our Advisors
-          </button>
-        </motion.div>
+          SPEAK WITH OUR ADVISORS
+        </motion.button>
       </section>
     </div>
   );
@@ -191,19 +204,19 @@ export default function Investments() {
 
 /* ================= COMPONENTS ================= */
 
-function WhyCard({ icon, title, desc }) {
+function WhyCard({ index, title, desc }) {
   return (
     <motion.div
-      variants={fadeInUp}
-      className="bg-white p-12 text-center border border-slate-200 hover:border-[#0B2C6F] transition shadow-sm hover:shadow-lg"
+      variants={fadeUp}
+      className="bg-white border border-slate-200 p-12 text-center hover:border-[#0B2C6F] transition shadow-sm hover:shadow-lg"
     >
       <div className="text-[#0B2C6F]/20 font-mono text-5xl font-black mb-6">
-        {icon}
+        {index}
       </div>
       <h3 className="text-lg font-bold text-[#0B2C6F] mb-4 uppercase">
         {title}
       </h3>
-      <p className="text-[#475569] text-sm font-light">
+      <p className="text-slate-600 text-sm leading-relaxed">
         {desc}
       </p>
     </motion.div>
@@ -215,39 +228,41 @@ function InvestmentCard({ rate, title, subtitle, data, features }) {
 
   return (
     <motion.div
-      variants={fadeInUp}
-      className="p-10 bg-white border border-slate-200 hover:border-[#0B2C6F] transition flex flex-col shadow-sm hover:shadow-xl"
+      variants={fadeUp}
+      className="bg-white border border-slate-200 p-12 hover:border-[#0B2C6F] transition flex flex-col shadow-sm hover:shadow-xl"
     >
-      <span className="bg-[#0B2C6F] text-white px-4 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 w-fit">
+      <span className="bg-[#0B2C6F] text-white px-5 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 w-fit">
         {rate}
       </span>
 
       <h3 className="text-3xl font-bold text-[#0B2C6F] mb-2">
         {title}
       </h3>
-      <p className="text-[#475569] text-sm mb-10 font-light">
+
+      <p className="text-slate-600 text-sm mb-10">
         {subtitle}
       </p>
 
-      <div className="grid grid-cols-3 gap-4 mb-10 py-6 border-y border-slate-100">
+      <div className="grid grid-cols-3 gap-6 py-6 mb-10 border-y border-slate-100">
         <Info label="Tenure" value={data.period} />
-        <Info label="Assets" value={data.asset} />
+        <Info label="Asset" value={data.asset} />
         <Info label="Risk" value={data.risk} />
       </div>
 
-      <ul className="space-y-4 mb-12 flex-grow">
+      <ul className="space-y-4 flex-grow mb-12">
         {features.map((f, i) => (
-          <li key={i} className="flex items-center gap-3 text-xs text-[#475569]">
-            <span className="w-3 h-[1px] bg-[#0B2C6F]" /> {f}
+          <li key={i} className="flex gap-3 text-sm text-slate-600">
+            <span className="text-[#0B2C6F] font-bold">—</span>
+            {f}
           </li>
         ))}
       </ul>
 
       <button
         onClick={() => navigate("/contact")}
-        className="w-full border border-[#0B2C6F] text-[#0B2C6F] py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#0B2C6F] hover:text-white transition"
+        className="border border-[#0B2C6F] text-[#0B2C6F] py-4 font-semibold tracking-widest hover:bg-[#0B2C6F] hover:text-white transition"
       >
-        Enquire Now
+        ENQUIRE NOW
       </button>
     </motion.div>
   );

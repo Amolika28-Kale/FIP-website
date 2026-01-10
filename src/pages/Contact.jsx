@@ -13,20 +13,27 @@ import { useNavigate } from "react-router-dom";
 
 /* ================= ANIMATIONS ================= */
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 22 },
+const fadeUp = {
+  hidden: { opacity: 0, y: 26 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.75, ease: "easeOut" }
   }
 };
 
-const staggerContainer = {
-  hidden: {},
+const fadeScale = {
+  hidden: { opacity: 0, scale: 0.96 },
   visible: {
-    transition: { staggerChildren: 0.12 }
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.75, ease: "easeOut" }
   }
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.16 } }
 };
 
 /* ================= PAGE ================= */
@@ -38,95 +45,111 @@ export default function Contact() {
     <div className="w-full bg-[#F6F8FC] text-slate-800 overflow-x-hidden pt-20">
 
       {/* ================= HERO ================= */}
-      <section className="relative py-24 bg-white border-b px-6">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="relative bg-white border-b">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1E4ED8]/5 to-transparent" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-32 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
           >
-            <span className="inline-block mb-6 px-6 py-2 text-[11px] uppercase tracking-[0.35em] font-bold bg-[#E9EEF9] text-[#0B2C6D] rounded-full">
+            <motion.span
+              variants={fadeUp}
+              className="inline-block mb-8 px-6 py-2 text-[11px] uppercase tracking-[0.35em] font-bold bg-[#EEF2FF] text-[#1E4ED8] rounded-full"
+            >
               Professional Consultation
-            </span>
+            </motion.span>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#0B2C6D] mb-6">
-              Speak With a <span className="text-[#1E4ED8]">Financial Principal</span>
-            </h1>
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#0B2C6D] mb-8"
+            >
+              Speak With a{" "}
+              <span className="text-[#1E4ED8]">Financial Principal</span>
+            </motion.h1>
 
-            <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg font-medium">
+            <motion.p
+              variants={fadeUp}
+              className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg font-medium"
+            >
               Expert guidance across finance, investment, and property —
               confidential, structured, and compliant.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* ================= MAIN ================= */}
-      <section className="py-28 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <section className="py-32">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-start">
 
           {/* ================= FORM ================= */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="bg-white p-10 md:p-16 rounded-2xl shadow-xl border border-slate-200"
+            variants={fadeScale}
+            className="relative bg-white rounded-3xl border border-slate-200 shadow-xl p-12 md:p-16"
           >
-            <h2 className="text-xs font-bold text-[#1E4ED8] uppercase tracking-[0.3em] mb-12">
-              Consultation Request
-            </h2>
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1E4ED8]/10 to-transparent blur-2xl" />
 
-            <form className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormInput label="Full Name" placeholder="Your Name" />
-                <FormInput label="Email Address" placeholder="you@email.com" />
-              </div>
-
-              <FormInput label="Mobile Number" placeholder="+91 XXXXX XXXXX" />
-
-              <div className="space-y-3">
-                <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                  Inquiry Details
-                </label>
-                <textarea
-                  rows="5"
-                  placeholder="Briefly describe your requirement..."
-                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1E4ED8] text-sm resize-none"
-                />
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                type="button"
-                onClick={() => navigate("/payment")}
-                className="w-full bg-[#0B2C6D] hover:bg-[#1E4ED8] text-white py-4 rounded-lg font-bold uppercase tracking-wider shadow-lg transition"
-              >
-                Proceed to Payment — ₹499
-              </motion.button>
-
-              <p className="text-center text-xs text-slate-500 uppercase tracking-wider">
-                Secure & Confidential Consultation
+            <div className="relative">
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#1E4ED8] mb-12">
+                Consultation Request
               </p>
-            </form>
+
+              <form className="space-y-10">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <FormInput label="Full Name" placeholder="Your Name" />
+                  <FormInput label="Email Address" placeholder="you@email.com" />
+                </div>
+
+                <FormInput label="Mobile Number" placeholder="+91 XXXXX XXXXX" />
+
+                <div className="space-y-3">
+                  <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    Inquiry Details
+                  </label>
+                  <textarea
+                    rows="5"
+                    placeholder="Briefly describe your requirement..."
+                    className="w-full border border-slate-300 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E4ED8] text-sm resize-none"
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  type="button"
+                  onClick={() => navigate("/payment")}
+                  className="w-full bg-[#0B2C6D] hover:bg-[#1E4ED8] text-white py-5 rounded-xl font-bold uppercase tracking-widest shadow-lg transition"
+                >
+                  Submit & Proceed to Payment — ₹499
+                </motion.button>
+
+                <p className="text-center text-xs text-slate-500 uppercase tracking-wider">
+                  Secure • Confidential • Principal-Led Consultation
+                </p>
+              </form>
+            </div>
           </motion.div>
 
           {/* ================= INFO ================= */}
-          <div className="space-y-16">
+          <div className="space-y-20">
 
             {/* Contact Cards */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={staggerContainer}
-              className="space-y-10"
+              variants={stagger}
             >
-              <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-slate-500 mb-10">
                 Contact Channels
-              </h3>
+              </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="grid sm:grid-cols-2 gap-8">
                 <ContactIconCard
                   icon={<Phone size={20} />}
                   title="Phone Support"
@@ -147,14 +170,14 @@ export default function Contact() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={staggerContainer}
-              className="bg-white p-10 rounded-2xl shadow-lg border border-slate-200"
+              variants={fadeUp}
+              className="bg-white p-12 rounded-3xl border border-slate-200 shadow-lg"
             >
-              <h3 className="text-2xl font-extrabold mb-10 text-[#0B2C6D]">
+              <h3 className="text-2xl font-extrabold mb-12 text-[#0B2C6D]">
                 Why Choose FIP Consultancy
               </h3>
 
-              <ul className="space-y-6">
+              <ul className="space-y-7">
                 <WhyItem icon={<ShieldCheck size={16} />} text="Verified & compliant advisory process" />
                 <WhyItem icon={<BarChart3 size={16} />} text="Data-backed financial recommendations" />
                 <WhyItem icon={<Zap size={16} />} text="Fast execution & clear timelines" />
@@ -167,7 +190,7 @@ export default function Contact() {
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="py-10 bg-white border-t text-center px-6">
+      <footer className="py-12 bg-white border-t text-center px-6">
         <p className="text-xs text-slate-500 uppercase tracking-widest">
           ₹499 Consultation Fee • Secure • Confidential • FIP Consultancy
         </p>
@@ -186,7 +209,7 @@ function FormInput({ label, placeholder }) {
       </label>
       <input
         placeholder={placeholder}
-        className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1E4ED8] text-sm"
+        className="w-full border border-slate-300 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E4ED8] text-sm"
       />
     </div>
   );
@@ -195,8 +218,9 @@ function FormInput({ label, placeholder }) {
 function ContactIconCard({ icon, title, info, sub }) {
   return (
     <motion.div
-      variants={fadeInUp}
-      className="p-8 rounded-xl bg-white border border-slate-200 shadow-sm hover:shadow-xl transition"
+      variants={fadeUp}
+      whileHover={{ y: -6 }}
+      className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition"
     >
       <div className="text-[#1E4ED8] mb-4">{icon}</div>
       <p className="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
@@ -215,7 +239,7 @@ function ContactIconCard({ icon, title, info, sub }) {
 function WhyItem({ icon, text }) {
   return (
     <motion.li
-      variants={fadeInUp}
+      variants={fadeUp}
       className="flex items-center gap-4 text-sm text-slate-700 font-medium"
     >
       <div className="text-[#1E4ED8] shrink-0">{icon}</div>

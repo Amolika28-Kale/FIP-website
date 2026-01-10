@@ -4,75 +4,89 @@ import { motion } from "framer-motion";
 
 /* ================= ANIMATIONS ================= */
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 26 },
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+const fadeScale = {
+  hidden: { opacity: 0, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
 };
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.18 } },
+};
+
+/* ================= PAGE ================= */
 
 export default function About() {
   return (
-    <div className="w-full bg-[#f6f8fc] text-[#0f172a] overflow-x-hidden pt-20">
+    <div className="w-full bg-[#f6f8fc] text-slate-800 overflow-x-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="relative min-h-[55vh] flex items-center justify-center bg-white px-6 border-b border-slate-200">
-        <div className="relative z-10 max-w-7xl mx-auto text-center py-20">
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 py-32 text-center">
+
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={staggerContainer}
+            variants={stagger}
           >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-block px-6 py-2 text-[11px] uppercase tracking-[0.35em] font-bold bg-[#e9eef9] text-[#0B2C6D] rounded-full">
-                About FIP Consultancy
-              </span>
-            </motion.div>
+            <motion.span
+              variants={fadeUp}
+              className="inline-block px-6 py-2 text-[11px] uppercase tracking-[0.35em] font-bold bg-[#eef2ff] text-[#1E4ED8] rounded-full mb-8"
+            >
+              About FIP Consultancy
+            </motion.span>
 
             <motion.h1
-              variants={fadeInUp}
+              variants={fadeUp}
               className="text-4xl md:text-7xl font-extrabold tracking-tight text-[#0B2C6D]"
             >
               Our <span className="text-[#1E4ED8]">Foundation</span>
             </motion.h1>
 
             <motion.p
-              variants={fadeInUp}
-              className="max-w-3xl mx-auto mt-8 text-slate-700 text-base md:text-lg font-medium"
+              variants={fadeUp}
+              className="max-w-3xl mx-auto mt-10 text-slate-600 text-base md:text-lg font-medium"
             >
-              Finance&nbsp;&nbsp;|&nbsp;&nbsp;Investment&nbsp;&nbsp;|&nbsp;&nbsp;Property
+              Finance &nbsp;|&nbsp; Investment &nbsp;|&nbsp; Property
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* ================= WHO WE ARE ================= */}
-      <section className="py-28 bg-white px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
+
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={fadeUp}
           >
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#1E4ED8] font-bold mb-6">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#1E4ED8] font-bold mb-6">
               Who We Are
+            </p>
+
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-[#0B2C6D] mb-10">
+              Building Financial Confidence
             </h2>
 
-            <h3 className="text-3xl md:text-5xl font-extrabold mb-10 leading-tight text-[#0B2C6D]">
-              Building Financial Confidence
-            </h3>
-
-            <div className="space-y-7 text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+            <div className="space-y-8 text-slate-700 text-base md:text-lg leading-relaxed font-medium">
               <p>
-                <strong className="text-[#0B2C6D] font-bold">FIP Consultancy</strong> is a
+                <strong className="text-[#0B2C6D]">FIP Consultancy</strong> is a
                 professional advisory firm helping individuals and businesses
                 navigate finance, investments, and property with confidence and clarity.
               </p>
@@ -87,88 +101,82 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={fadeScale}
             className="relative"
           >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1E4ED8]/20 to-transparent blur-2xl" />
             <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80"
               alt="FIP Consultancy Team"
-              className="rounded-2xl shadow-2xl w-full h-auto"
+              className="relative rounded-3xl shadow-2xl w-full"
             />
           </motion.div>
+
         </div>
       </section>
 
       {/* ================= STATS ================= */}
-      <section className="py-28 bg-[#f6f8fc] px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-          <StatCard value="1000+" label="Clients Served" />
-          <StatCard value="₹500Cr+" label="Assets Advised" />
-          <StatCard value="98%" label="Client Retention" />
-          <StatCard value="15+" label="Years Experience" />
-        </div>
+      <section className="py-28 bg-[#f6f8fc]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+          className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center"
+        >
+          <Stat value="1000+" label="Clients Served" />
+          <Stat value="₹500Cr+" label="Assets Advised" />
+          <Stat value="98%" label="Client Retention" />
+          <Stat value="15+" label="Years Experience" />
+        </motion.div>
       </section>
 
       {/* ================= VALUES ================= */}
-      <section className="py-28 bg-white px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+
           <div className="text-center mb-24">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#1E4ED8] font-bold mb-4">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#1E4ED8] font-bold mb-6">
               Our Values
-            </h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold text-[#0B2C6D]">
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B2C6D]">
               What Drives Us
-            </h3>
+            </h2>
           </div>
 
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10"
+            variants={stagger}
+            className="grid sm:grid-cols-2 md:grid-cols-4 gap-10"
           >
-            <ValueCard
-              index="01"
-              title="Transparency"
-              desc="Clear structures, honest advice, and complete disclosure."
-            />
-            <ValueCard
-              index="02"
-              title="Expertise"
-              desc="Market knowledge backed by experience and research."
-            />
-            <ValueCard
-              index="03"
-              title="Trust"
-              desc="Long-term partnerships built on integrity."
-            />
-            <ValueCard
-              index="04"
-              title="Performance"
-              desc="Focused on risk-managed and sustainable growth."
-            />
+            <Value index="01" title="Transparency" desc="Clear structures, honest advice, and complete disclosure." />
+            <Value index="02" title="Expertise" desc="Market knowledge backed by experience and research." />
+            <Value index="03" title="Trust" desc="Long-term partnerships built on integrity." />
+            <Value index="04" title="Performance" desc="Focused on risk-managed and sustainable growth." />
           </motion.div>
         </div>
       </section>
 
       {/* ================= COMMITMENT ================= */}
-      <section className="py-32 bg-[#0B2C6D] text-white px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
+      <section className="py-32 bg-[#0B2C6D] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-xl md:text-4xl font-light italic leading-snug"
           >
-            <p className="text-xl md:text-4xl font-light italic leading-snug">
-              “Every financial decision we guide is rooted in discipline,
-              responsibility, and long-term vision.”
-            </p>
+            “Every financial decision we guide is rooted in discipline,
+            responsibility, and long-term vision.”
+          </motion.p>
 
-            <div className="mt-14 h-1 w-28 bg-white/70 mx-auto rounded-full" />
-          </motion.div>
+          <div className="mt-14 h-[2px] w-28 bg-white/60 mx-auto rounded-full" />
         </div>
       </section>
     </div>
@@ -177,27 +185,28 @@ export default function About() {
 
 /* ================= COMPONENTS ================= */
 
-function StatCard({ value, label }) {
+function Stat({ value, label }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.06 }}
-      className="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition"
+      variants={fadeUp}
+      whileHover={{ y: -6 }}
+      className="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition"
     >
-      <p className="text-3xl md:text-5xl font-extrabold text-[#0B2C6D] mb-3">
+      <p className="text-3xl md:text-5xl font-extrabold text-[#0B2C6D] mb-4">
         {value}
       </p>
-      <p className="text-slate-600 uppercase tracking-[0.25em] text-[11px] font-bold">
+      <p className="text-slate-500 uppercase tracking-[0.25em] text-[11px] font-bold">
         {label}
       </p>
     </motion.div>
   );
 }
 
-function ValueCard({ index, title, desc }) {
+function Value({ index, title, desc }) {
   return (
     <motion.div
-      variants={fadeInUp}
-      className="bg-white p-10 rounded-2xl border border-slate-200 hover:shadow-2xl transition"
+      variants={fadeUp}
+      className="bg-white p-10 rounded-3xl border border-slate-200 hover:shadow-2xl transition"
     >
       <div className="text-[#1E4ED8] font-extrabold text-2xl mb-6">
         {index}

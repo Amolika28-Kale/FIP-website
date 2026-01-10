@@ -34,13 +34,13 @@ export default function Navbar() {
 
   const linkClass = ({ isActive }) =>
     `relative text-[11px] uppercase tracking-[0.28em] font-semibold transition-colors duration-300
-     ${isActive ? "text-[#0B2A5B]" : "text-slate-600 hover:text-slate-900"}`;
+     ${isActive ? "text-[#0B2A5B]" : "text-black-600 hover:text-black-900"}`;
 
   return (
     <header
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-slate-200 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.18)] py-3"
+          ? "bg-black/90 backdrop-blur-xl border-b border-slate-200 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.18)] py-3"
           : "bg-transparent py-6"
       }`}
     >
