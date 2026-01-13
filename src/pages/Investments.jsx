@@ -11,7 +11,8 @@ import {
   Building2, 
   PieChart, 
   Timer,
-  ChevronRight
+  ChevronRight,
+  PhoneCall
 } from "lucide-react";
 
 /* ================= ANIMATIONS ================= */
@@ -56,7 +57,7 @@ export default function Investments() {
 
             <motion.div variants={fadeUp} className="mb-6 md:mb-10 flex justify-center">
               <span className="flex items-center gap-2 px-4 md:px-6 py-2 border border-[#0B2C6F]/20 text-[#0B2C6F] text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold bg-slate-50 rounded-full shadow-sm">
-                <ShieldCheck size={12} className="animate-pulse" /> Asset Backed 💼
+                <ShieldCheck size={12} className="animate-pulse" /> Asset Backed
               </span>
             </motion.div>
 
@@ -76,7 +77,7 @@ export default function Investments() {
               className="mt-8 md:mt-12 max-w-3xl mx-auto text-base md:text-2xl text-slate-500 leading-relaxed font-medium px-4 md:px-0"
             >
               Strategic opportunities for <span className="text-[#0B2C6F] font-bold underline decoration-blue-200 underline-offset-4">short-term gains</span> and
-              wealth creation — structured with absolute transparency. 📈
+              wealth creation — structured with absolute transparency.
             </motion.p>
             
             <motion.div variants={fadeUp} className="mt-8 md:mt-12 flex justify-center px-4 md:px-0">
@@ -149,7 +150,8 @@ export default function Investments() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} className="mb-12 md:mb-20">
             <h2 className="text-4xl md:text-7xl font-black mb-4 text-[#0B2C6F] tracking-tighter">
-              Opportunities 📈
+               <TrendingUp size={36} />
+              Opportunities
             </h2>
             <div className="h-1.5 md:h-2 w-20 md:w-32 bg-[#0B2C6F] rounded-full" />
           </motion.div>
@@ -159,7 +161,7 @@ export default function Investments() {
               icon={<Timer className="text-blue-600" size={20} />}
               rate="20–25% PA"
               title="Short-Term Investments"
-              subtitle="Capital-efficient opportunities for faster exits. ⏱️"
+              subtitle="Capital-efficient opportunities for faster exits. "
               data={{ period: "6–12 Months", asset: "Asset Backed", risk: "Moderate" }}
               features={["Land-based investments", "Residential assets", "Defined timelines", "High liquidity"]}
             />
@@ -168,7 +170,7 @@ export default function Investments() {
               icon={<Building2 className="text-blue-600" size={20} />}
               rate="30–40% PA"
               title="Long-Term Investments"
-              subtitle="Appreciation-focused land strategies. 🏔️"
+              subtitle="Appreciation-focused land strategies."
               data={{ period: "3 Years", asset: "Land Assets", risk: "Strategic" }}
               features={["Land acquisition", "Appreciation cycles", "Secure ownership", "Capital growth focus"]}
             />
@@ -177,7 +179,7 @@ export default function Investments() {
               icon={<BarChart3 className="text-blue-600" size={20} />}
               rate="Up to 10% PA"
               title="Monthly Rental Income"
-              subtitle="Stable monthly cash flow with appreciation. 🏠"
+              subtitle="Stable monthly cash flow with appreciation. "
               data={{ period: "Monthly", asset: "Property", risk: "Low" }}
               features={["Residential rentals", "Predictable income", "Long-term value", "Low volatility"]}
             />
@@ -186,7 +188,7 @@ export default function Investments() {
               icon={<PieChart className="text-blue-600" size={20} />}
               rate="15–20% PA"
               title="Investment Against Shares"
-              subtitle="Downside-protected equity participation. 📊"
+              subtitle="Downside-protected equity participation. "
               data={{ period: "Variable", asset: "Equity", risk: "Balanced" }}
               features={["Assured returns", "Profit participation", "Capital protection", "Aligned interests"]}
             />
@@ -208,7 +210,7 @@ export default function Investments() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-3xl md:text-7xl font-bold text-white mb-8 md:mb-12 leading-tight"
           >
-            Invest with <span className="italic">confidence</span>. <br className="hidden md:block" /> Grow with <span className="text-blue-400 underline underline-offset-8">discipline.</span> 💎
+            Invest with <span className="italic">confidence</span>. <br className="hidden md:block" /> Grow with <span className="text-blue-400 underline underline-offset-8">discipline.</span>
           </motion.h2>
 
           <motion.button
@@ -217,7 +219,8 @@ export default function Investments() {
             onClick={() => navigate("/contact")}
             className="w-full md:w-auto bg-white text-[#0B2C6F] px-10 md:px-16 py-4 md:py-6 font-black tracking-widest text-base md:text-lg shadow-2xl transition-all"
           >
-            SPEAK WITH ADVISORS 📞
+             <PhoneCall size={20} />
+            SPEAK WITH ADVISORS 
           </motion.button>
         </div>
       </section>

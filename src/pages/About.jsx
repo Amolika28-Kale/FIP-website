@@ -11,7 +11,8 @@ import {
   ShieldCheck, 
   Rocket,
   ArrowRight,
-  Target
+  Target,
+  Building2
 } from "lucide-react";
 
 /* ================= ANIMATIONS ================= */
@@ -50,7 +51,8 @@ export default function About() {
               variants={fadeUp}
               className="inline-flex items-center gap-2 px-6 py-2 text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-black bg-[#eef2ff] text-[#1E4ED8] rounded-full mb-8 border border-blue-100 shadow-sm"
             >
-              🏛️ ABOUT FIP CONSULTANCY 🏛️
+              <Building2 size={16} />
+              ABOUT FIP CONSULTANCY 
             </motion.span>
 
             <motion.h1
@@ -76,7 +78,7 @@ export default function About() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="flex items-center gap-3 mb-6">
                <div className="h-[2px] w-10 bg-blue-600" />
-               <p className="text-xs uppercase tracking-[0.35em] text-[#1E4ED8] font-black">WHO WE ARE 🤔</p>
+               <p className="text-xs uppercase tracking-[0.35em] text-[#1E4ED8] font-black">WHO WE ARE</p>
             </div>
 
             <h2 className="text-3xl md:text-6xl font-black leading-[1.1] text-[#0B2C6D] mb-8 tracking-tighter">
@@ -87,7 +89,7 @@ export default function About() {
               <p className="font-medium">
                 <strong className="text-[#0B2C6D]">FIP Consultancy</strong> is a
                 professional advisory firm helping individuals and businesses
-                navigate finance, investments, and property with discipline. 📈
+                navigate finance, investments, and property with discipline.
               </p>
 
               <div className="grid grid-cols-1 gap-4">
@@ -136,7 +138,7 @@ export default function About() {
       <section className="py-20 md:py-32 bg-white px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-xs uppercase tracking-[0.5em] text-[#1E4ED8] font-black mb-6">OUR VALUES ✨</h2>
+            <h2 className="text-xs uppercase tracking-[0.5em] text-[#1E4ED8] font-black mb-6">OUR VALUES</h2>
             <h3 className="text-3xl md:text-6xl font-black text-[#0B2C6D] tracking-tighter">What Drives Us</h3>
           </div>
 
@@ -159,7 +161,7 @@ export default function About() {
       <section className="py-20 md:py-32 bg-[#f6f8fc] border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-2xl md:text-5xl font-black text-[#0B2C6D] tracking-tighter">Insights & Thinking 📰</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-[#0B2C6D] tracking-tighter">Insights & Thinking </h2>
             <div className="hidden md:flex gap-2">
                <div className="w-12 h-1 bg-blue-600 rounded-full" />
                <div className="w-4 h-1 bg-blue-200 rounded-full" />

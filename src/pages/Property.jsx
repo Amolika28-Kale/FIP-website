@@ -11,7 +11,8 @@ import {
   ShieldCheck, 
   UserCheck, 
   GanttChartSquare,
-  ChevronRight
+  ChevronRight,
+  PhoneCall
 } from "lucide-react";
 
 /* ================= ANIMATIONS ================= */
@@ -54,7 +55,7 @@ export default function Property() {
             
             <motion.div variants={fadeUp} className="mb-6 md:mb-10 flex justify-center">
               <span className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#0B2C6F] bg-white border-2 border-[#0B2C6F]/10 rounded-full shadow-sm">
-                <Building2 size={12} className="animate-bounce" /> Property Advisory 🏠
+                <Building2 size={12} className="animate-bounce" /> Property Advisory 
               </span>
             </motion.div>
 
@@ -78,7 +79,7 @@ export default function Property() {
               className="mt-6 md:mt-12 max-w-3xl mx-auto text-base md:text-2xl text-slate-500 leading-relaxed font-medium px-2"
             >
               End-to-end real estate advisory focused on <span className="text-[#0B2C6F] font-bold">profitability</span>,
-              regulatory compliance, and asset security. 🏛️
+              regulatory compliance, and asset security. 
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-8 md:mt-12 flex justify-center">
@@ -104,7 +105,7 @@ export default function Property() {
           >
             <div className="text-left">
               <h2 className="text-[10px] uppercase tracking-[0.3em] text-[#0B2C6F] font-black mb-2">
-                Real Estate Lifecycle 🔄
+                Real Estate Lifecycle 
               </h2>
               <h3 className="text-3xl md:text-6xl font-black text-[#0B2C6F] tracking-tighter">
                 Advisory & Management
@@ -146,7 +147,7 @@ export default function Property() {
       <section className="py-16 md:py-36 bg-[#F1F5F9] border-y border-slate-200 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.span className="text-[10px] uppercase tracking-[0.3em] font-black text-[#0B2C6F] bg-blue-50 px-4 py-2 rounded-full border border-blue-100 inline-block">
-            🔒 Assured Exit Model
+            Assured Exit Model
           </motion.span>
 
           <h2 className="text-3xl md:text-7xl font-black text-[#0B2C6F] mt-6 md:mt-8 mb-12 md:mb-20 tracking-tighter italic">
@@ -154,9 +155,9 @@ export default function Property() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <ExitCard year="YEAR 01" roi="15–20%" desc="Early appreciation phase 🚀" />
-            <ExitCard year="YEAR 02" roi="20–30%" desc="Growth acceleration phase ⚡" />
-            <ExitCard year="YEAR 03" roi="30–40%" desc="Optimized exit window 🏁" />
+            <ExitCard year="YEAR 01" roi="15–20%" desc="Early appreciation phase " />
+            <ExitCard year="YEAR 02" roi="20–30%" desc="Growth acceleration phase " />
+            <ExitCard year="YEAR 03" roi="30–40%" desc="Optimized exit window " />
           </div>
 
           <div className="mt-12 md:mt-20 p-6 md:p-8 bg-white border border-slate-200 inline-block shadow-sm w-full md:w-auto">
@@ -172,7 +173,7 @@ export default function Property() {
       <section className="py-16 md:py-32 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6 mb-10 md:mb-16 flex items-center justify-between">
           <h2 className="text-2xl md:text-5xl font-black text-[#0B2C6F] tracking-tighter">
-            Insights 📰
+            Insights 
           </h2>
           <div className="flex gap-1 md:gap-2">
              <div className="w-8 md:w-12 h-1 bg-[#0B2C6F]" />
@@ -222,9 +223,11 @@ export default function Property() {
 
           <button 
             onClick={() => navigate("/contact")}
-            className="w-full sm:w-auto bg-white text-[#0B2C6F] px-10 md:px-16 py-4 md:py-6 font-black tracking-widest hover:bg-slate-100 transition shadow-2xl text-base md:text-lg"
+            className="w-full sm:w-auto bg-white text-[#0B2C6F] px-10 md:px-16 py-4 md:py-6 font-black tracking-widest hover:bg-slate-100 transition shadow-2xl text-base md:text-lg flex items-center gap-3 justify-center mx-auto"
           >
-            CONSULT ADVISOR 📞
+ CONSULT ADVISOR 
+         <PhoneCall size={20} />
+           
           </button>
         </div>
       </section>

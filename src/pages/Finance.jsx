@@ -11,7 +11,8 @@ import {
   FileCheck, 
   Coins, 
   BarChart3,
-  ChevronRight
+  ChevronRight,
+  Settings
 } from "lucide-react";
 
 /* ================= ANIMATIONS ================= */
@@ -60,7 +61,7 @@ export default function Finance() {
             <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
               <span className="h-px w-14 bg-[#1E3A8A]" />
               <span className="uppercase text-[10px] sm:text-xs tracking-[0.5em] font-bold text-[#1E3A8A] flex items-center gap-2">
-                <ShieldCheck size={14} /> FIP FINANCE ADVISORY 💼
+                <ShieldCheck size={14} /> FIP FINANCE ADVISORY 
               </span>
             </motion.div>
 
@@ -80,7 +81,7 @@ export default function Finance() {
             >
               Capital solutions designed with discipline, compliance, and
               asset-backed security — serving individuals, enterprises,
-              and institutional investors. 🏦
+              and institutional investors. 
             </motion.p>
             
             <motion.div variants={fadeUp} className="mt-10">
@@ -104,7 +105,7 @@ export default function Finance() {
             className="flex items-center gap-4 mb-16"
           >
             <h2 className="text-4xl sm:text-6xl font-black text-[#0B2A5B] tracking-tighter">
-              Capabilities 🏛️
+              Capabilities
             </h2>
             <div className="h-px flex-1 bg-slate-200 hidden md:block" />
           </motion.div>
@@ -188,9 +189,11 @@ export default function Finance() {
             whileInView={{ opacity: 1, y: 0 }}
             className="mb-20 text-center"
           >
-            <h2 className="text-4xl sm:text-6xl font-bold text-[#0B2A5B] mb-4">
-              Execution Framework ⚙️
-            </h2>
+           <h2 className="flex items-center gap-4 text-4xl sm:text-6xl font-bold text-[#0B2A5B] mb-4">
+  <Settings className="w-8 h-8 sm:w-10 sm:h-10 text-[#0B2A5B]" />
+  Execution Framework
+</h2>
+
             <p className="text-slate-500 font-medium">A standardized 4-step process for capital delivery.</p>
           </motion.div>
 
@@ -240,7 +243,7 @@ export default function Finance() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-4xl sm:text-6xl font-bold text-white mb-12 leading-tight"
           >
-            Capital structured <br /> with <span className="text-blue-400">absolute confidence.</span> 💎
+            Capital structured <br /> with <span className="text-blue-400">absolute confidence.</span>
           </motion.h2>
 
           <motion.button
